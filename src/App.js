@@ -1,4 +1,4 @@
-import React from "react"
+import {React, useState, useEffect} from "react"
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch} from "react-router-dom";
@@ -12,8 +12,34 @@ import Search from "./Pages/Search"
 import Nav from "./components/Nav"
 
 function App() {
+  //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
+  //const url = `https://api.themoviedb.org/3/movie/popular?api_key=5${apiKey}&language=en-US&page=20`;
+  const url =
+    "https://api.themoviedb.org/3/movie/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
+  
+  console.log("the url", url);
+  console.log("length", url.length);
+  const [movies, setMovies] = useState(null);
+  const [requestedMovies, setRequestedMovies] = useState(false);
+
+  //function to fetch movie data
+  const getMovies = async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("movie data got back", data);
+    setMovies(data.results);
+  };
+  if (requestedMovies === false) {
+    setRequestedMovies(true);
+    getMovies();
+  }
   return (
+    
     <div className="App">
+      <div className = "container">
+        <div className = "row"></div>
+<Gallery movies = {movies} />
+      </div>
     <Switch>
       <Route exact path="/">
       <Nav />

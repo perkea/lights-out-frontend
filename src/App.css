@@ -87,7 +87,7 @@ body {
 	color: #ffffff;
 }
 
-.movie-app > .row {
+.container > .row {
 	overflow-x: auto;
 	flex-wrap: nowrap;
 }
@@ -134,4 +134,17 @@ font-size: 20px;
 .signup_page{
 background-color: var(--main-color1);
 
+}
+/* Rating */
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
 }
