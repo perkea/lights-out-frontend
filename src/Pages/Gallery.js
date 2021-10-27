@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+
 
 
 const Gallery = (props) => {
@@ -16,10 +17,10 @@ const Gallery = (props) => {
            console.log("individual movie", movie);
 
           return <div className = "image_container d-flex justify-content-start m-3">
-            <h1 className = "movie_title">{movie.title}</h1>
+            {/* <h1 className = "movie_title">{movie.title}</h1> */}
           
             <img src = "movie_image" src={imageUrl +'/' +movie.poster_path} alt = "movie"/>
-            
+           
           </div>;
         
         })}
