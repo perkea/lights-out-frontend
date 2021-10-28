@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {StyledMain} from "../styles";
+import { StyledMain } from "../styles";
 import {signIn }from "../services/firebase"
 
 

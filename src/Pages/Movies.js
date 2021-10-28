@@ -1,5 +1,6 @@
 import React from "react";
 import Ratings from "./ReviewsList";
+import { useState, useEffect } from "react";
 import Review from "./Review";
 
 const Movies = (props) => {
@@ -16,22 +17,68 @@ const Movies = (props) => {
     const movie = movies.find((m) => {
       return m.id === parseInt(id);
     });
-    const [reviews, setReviews] = useState([
-      { review: "Very cool movie", rating: 3 },
-      { rewiew: "I dint like this movie", rating: 1 },
-    ]);
 
-    function addReview(review) {
-      setReviews([...reviews, review]);
-    }
-    console.log("single movie", movie);
+    const [formState, setFormState] = useState({
+      name: "",
+      review: "",
+      rating: "",
+    });
+
+    //review form helperfunctions
+    const handleChange = (event) => {
+      setFormState((prevState) => ({
+        ...prevState,
+        [event.target.name]: event.target.value,
+      }));
+    };
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      props.createReview(formState);
+      //Add users uid to form;
+      setFormState({
+        name: "",
+        review: "",
+        rating: "",
+      });
+      
+    };
     return (
       <div>
         <img src={imageUrl + "/" + movie.poster_path} alt="" />
         <h1>{movie.title}</h1>
         <p>{movie.release_date}</p>
         <p>{movie.overview}</p>
-        <Ratings reviews={reviews} />
+        {/* <Ratings reviews={reviews} /> */}
+        <form onSubmit={handleSubmit}>
+          <input
+            onChange={handleChange}
+            value={formState.name}
+            name="name"
+            type="text"
+          />
+          <input
+            onChange={handleChange}
+            value={formState.review}
+            name="name"
+            type="text"
+          />
+          <input
+            onChange={handleChange}
+            value={formState.rating}
+            name="name"
+            type="text"
+          />
+          <input type="submit" value="Add review" />
+        </form>
+        <p>
+{props.reviews.map((review)=>{
+  {review.name}
+  {review.review}
+  {review.rating}
+})}
+
+        </p>
       </div>
     );
   }

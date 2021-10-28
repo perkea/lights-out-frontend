@@ -38,11 +38,7 @@ function App() {
 
   //Setting up authentication
   const [user, setUser] = useState(null);
-  useEffect(() => {
-    const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
-    getReviews();
-    return()=> unsuscribe()
-  }, [user]);
+ 
 
   //reviews helper functions
   const getReviews = async () => {
@@ -58,7 +54,25 @@ function App() {
   });
   const reviews = await response.json();
   setReviews(reviews);
-}
+}// get a secure id token from our firebase user
+
+
+
+const createReview = async person => {
+const data = {...person, managedBy: user.uid} // attach logged in user's uid to the data we send to the server
+await fetch(API_URL, {
+  method: 'POST', 
+  headers: {'Content-type': 'Application/json'},
+  body: JSON.stringify(data)
+});
+getReviews(); // we can now refresh our list of contacts
+} 
+
+useEffect(() => {
+  const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
+  getReviews();
+  return()=> unsuscribe()
+}, [user]);
   return (
     <div>
       <Switch>
@@ -99,6 +113,15 @@ function App() {
             user ? <Gallery /> : <Redirect to="/login" />;
           }}
         />
+        <Route path = "/movies" render = {()=>(
+         user? (
+           <Movies 
+           reviews = {reviews}
+           createReview = {createReview}
+           />
+         
+         ) : <Redirect to ="/login"/>
+  )} />
       </Switch>
     </div>
   );

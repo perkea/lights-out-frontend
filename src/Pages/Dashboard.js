@@ -1,6 +1,6 @@
 import {StyledMain} from "../styles";
 
-const Dashboard = (prpps)=>{
+const Dashboard = (props)=>{
 return(
 <StyledMain>
 <h1>Dashboard</h1>
