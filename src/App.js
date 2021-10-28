@@ -1,15 +1,16 @@
 import { React, useState, useEffect } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router-dom";
 import Gallery from "./Pages/Gallery";
 import Serials from "./Pages/Serials";
 import Login from "./Pages/Login";
-import Signup from "./Pages/Signup";
 import Movies from "./Pages/Movies";
 import Favourites from "./Pages/Favourites";
 import Search from "./Pages/Search";
 import Nav from "./components/Nav";
+import { auth } from "./services/firebase";
 
 function App() {
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
@@ -33,11 +34,17 @@ function App() {
     setRequestedMovies(true);
     getMovies();
   }
+
+  //Setting up authentocation
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
+  }, []);
   return (
     <div>
       <Switch>
         <Route exact path="/">
-          <Nav />
+          <Nav  user = {user}/>
           <div className="container movie-app">
             <div className="row">
               <Gallery movies={movies} />
@@ -48,7 +55,10 @@ function App() {
           <Nav />
           <Serials />
         </Route>
-        <Route path="/movies/:id" render={(rp) => <Movies {...rp} movies={movies} />} />
+        <Route
+          path="/movies/:id"
+          render={(rp) => <Movies {...rp} movies={movies} />}
+        />
         {/* <Route path="/movies">
           <Movies />
         </Route> */}
@@ -60,12 +70,14 @@ function App() {
           <Nav />
           <Search />
         </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/Signup">
-          <Signup />
-        </Route>
+        <Route
+          path="/login"
+          render={() => (user ? <Redirect to="/gallery" /> : <Login />)}
+        />
+        <Route path="/gallery" render = {()=>{
+          user ? <Gallery /> :<Redirect  to= "/login"/>
+        }}/>
+         
       </Switch>
     </div>
   );

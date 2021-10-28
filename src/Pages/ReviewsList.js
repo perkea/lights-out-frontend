@@ -24,16 +24,16 @@ import {React, useState} from "react";
 //   );
 // };
 
-const Ratings = ({ratings})=>{
-return(
-<textarea name="" id="" cols="30" rows="10">
-  {reviews.map((review, index)=>(
+const Ratings = ({skills})=>{
+return (
+<textarea name="" id="users_review" cols="30" rows="10">
+{reviews.map((review, index)=>{
+<Review key = {index} review = {review}/>
+})}
 
-  ))}
 </textarea>
 
 )
 }
-
 
 export default Ratings;

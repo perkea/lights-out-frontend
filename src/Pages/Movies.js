@@ -1,5 +1,6 @@
 import React from "react";
-import Ratings from "./Ratings";
+import Ratings from "./ReviewsList";
+import Review from "./Review";
 
 const Movies = (props) => {
   const imageWidth = "w300";
@@ -20,8 +21,8 @@ const Movies = (props) => {
       { rewiew: "I dint like this movie", rating: 1 },
     ]);
 
-    function addReview(review){
-setReviews([...reviews, review])
+    function addReview(review) {
+      setReviews([...reviews, review]);
     }
     console.log("single movie", movie);
     return (
@@ -30,7 +31,7 @@ setReviews([...reviews, review])
         <h1>{movie.title}</h1>
         <p>{movie.release_date}</p>
         <p>{movie.overview}</p>
-        <Ratings reviews = {reviews}/>
+        <Ratings reviews={reviews} />
       </div>
     );
   }
