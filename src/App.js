@@ -21,8 +21,8 @@ function App() {
   console.log("length", url.length);
   const [movies, setMovies] = useState(null);
   const [requestedMovies, setRequestedMovies] = useState(false);
-  const [reviews, setReviews] = useState([]);
-  const API_URL = "http://localhost:3001/api/reviews";
+  // const [reviews, setReviews] = useState([]);
+  // const API_URL = "http://localhost:3001/api/reviews";
 
   //function to fetch movie data
   const getMovies = async () => {
@@ -41,36 +41,36 @@ function App() {
  
 
   //reviews helper functions
-  const getReviews = async () => {
-    if (!user) return;
+  // const getReviews = async () => {
+  //   if (!user) return;
 
   // get a secure id token from our firebase user
-  const token = await user.getIdToken();
-  const response = await fetch(API_URL, {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer ' + token
-    }
-  });
-  const reviews = await response.json();
-  setReviews(reviews);
-}// get a secure id token from our firebase user
+//   const token = await user.getIdToken();
+//   const response = await fetch(API_URL, {
+//     method: 'GET',
+//     headers: {
+//       'Authorization': 'Bearer ' + token
+//     }
+//   });
+//   // const reviews = await response.json();
+//   // setReviews(reviews);
+// }// get a secure id token from our firebase user
 
 
 
-const createReview = async person => {
-const data = {...person, managedBy: user.uid} // attach logged in user's uid to the data we send to the server
-await fetch(API_URL, {
-  method: 'POST', 
-  headers: {'Content-type': 'Application/json'},
-  body: JSON.stringify(data)
-});
-getReviews(); // we can now refresh our list of contacts
-} 
+// const createReview = async person => {
+// const data = {...person, managedBy: user.uid} // attach logged in user's uid to the data we send to the server
+// await fetch(API_URL, {
+//   method: 'POST', 
+//   headers: {'Content-type': 'Application/json'},
+//   body: JSON.stringify(data)
+// });
+// getReviews(); // we can now refresh our list of contacts
+// } 
 
 useEffect(() => {
   const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
-  getReviews();
+  // getReviews();
   return()=> unsuscribe()
 }, [user]);
   return (
@@ -116,8 +116,8 @@ useEffect(() => {
         <Route path = "/movies" render = {()=>(
          user? (
            <Movies 
-           reviews = {reviews}
-           createReview = {createReview}
+          //  reviews = {reviews}
+          //  createReview = {createReview}
            />
          
          ) : <Redirect to ="/login"/>

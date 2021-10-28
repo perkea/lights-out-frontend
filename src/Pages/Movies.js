@@ -18,31 +18,31 @@ const Movies = (props) => {
       return m.id === parseInt(id);
     });
 
-    const [formState, setFormState] = useState({
-      name: "",
-      review: "",
-      rating: "",
-    });
+    // const [formState, setFormState] = useState({
+    //   name: "",
+    //   review: "",
+    //   rating: "",
+    // });
 
-    //review form helperfunctions
-    const handleChange = (event) => {
-      setFormState((prevState) => ({
-        ...prevState,
-        [event.target.name]: event.target.value,
-      }));
-    };
+    // //review form helperfunctions
+    // const handleChange = (event) => {
+    //   setFormState((prevState) => ({
+    //     ...prevState,
+    //     [event.target.name]: event.target.value,
+    //   }));
+    // };
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      props.createReview(formState);
-      //Add users uid to form;
-      setFormState({
-        name: "",
-        review: "",
-        rating: "",
-      });
+    // const handleSubmit = (event) => {
+    //   event.preventDefault();
+    //   props.createReview(formState);
+    //   //Add users uid to form;
+    //   setFormState({
+    //     name: "",
+    //     review: "",
+    //     rating: "",
+    //   });
       
-    };
+    // };
     return (
       <div>
         <img src={imageUrl + "/" + movie.poster_path} alt="" />
@@ -50,7 +50,7 @@ const Movies = (props) => {
         <p>{movie.release_date}</p>
         <p>{movie.overview}</p>
         {/* <Ratings reviews={reviews} /> */}
-        <form onSubmit={handleSubmit}>
+        {/* <form onSubmit={handleSubmit}>
           <input
             onChange={handleChange}
             value={formState.name}
@@ -72,13 +72,14 @@ const Movies = (props) => {
           <input type="submit" value="Add review" />
         </form>
         <p>
-{props.reviews.map((review)=>{
+{props.reviews.map((review)=>(
+  {review._id}
   {review.name}
   {review.review}
   {review.rating}
-})}
+))}
 
-        </p>
+        </p> */}
       </div>
     );
   }
