@@ -1,31 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Search from "../Pages/Search";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const Nav = (props) => {
   return (
     <div className="nav">
+      <Router>
       <Link to="/">
         <div>Gallery</div>
       </Link>
       <Link to="/serials">
-        <div>Serials</div>
+  <div>Serials</div>
       </Link>
       <Link to="/movies">
-        <div>Movies</div>
+  <div>Movies</div>
       </Link>
       <Link to="/favourites">
-        <div>Favourites</div>
+  <div>Favourites</div>
       </Link>
+      
       <Link to="/search">
-        <Search />
+   
       </Link>
       <Link to="/login">
-        <div>Login</div>
+   <div>Login</div>
       </Link>
       <Link to="/signup">
-        <div>Sign up</div>
+     <div>Signup</div>
       </Link>
+      </Router>
     </div>
   );
 };
