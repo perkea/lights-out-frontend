@@ -8,7 +8,7 @@ import "./App.css"
    
    return(
 
-    <h1 className = "signUp" style = {{backgroundImage: "url(/Images/Coco_dominates_Chinese_box_office_.jpeg)"}}>Sign Up</h1>
+    <h1 className = "signUp_container">Sign Up</h1>
    )
 
 
