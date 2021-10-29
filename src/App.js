@@ -10,6 +10,7 @@ import Favourites from "./Pages/Favourites";
 import Nav from "./components/Nav";
 import Search from "./Pages/Search";
 import { auth } from "./services/firebase";
+import Signup from "./Pages/Signup"
 
 function App() {
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
@@ -91,6 +92,9 @@ function App() {
           }}
         />
         <Route path="/movies" />
+        <Route path = "/signup"/>
+        <Signup />
+        <Route />
       </Switch>
     </div>
   );
