@@ -10,20 +10,18 @@ import Favourites from "./Pages/Favourites";
 import Nav from "./components/Nav";
 import Search from "./Pages/Search";
 import { auth } from "./services/firebase";
-import Signup from "./Pages/Signup"
+import Signup from "./Pages/Signup";
 
 function App() {
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
   //const url = `https://api.themoviedb.org/3/movie/popular?api_key=5${apiKey}&language=en-US&page=20`;
   const url =
     "https://api.themoviedb.org/3/movie/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
-  
 
   console.log("the url", url);
   console.log("length", url.length);
   const [movies, setMovies] = useState(null);
   const [requestedMovies, setRequestedMovies] = useState(false);
-  
 
   //function to fetch movie data
   const getMovies = async () => {
@@ -65,25 +63,26 @@ function App() {
         </Route>
         <Route path="/serials">
           <Nav />
+         
           <Serials />
         </Route>
         <Route
           path="/movies/:id"
           render={(rp) => <Movie {...rp} movies={movies} />}
         />
-        {/* <Route path="/movies">
-          <Movies />
-        </Route> */}
+
         <Route path="/favourites">
           <Nav />
           <Favourites />
         </Route>
+
         <Route path="/search">
           <Search searchValue={searchValue} setSearchValue={setSearchValue} />
         </Route>
+
         <Route
           path="/login"
-          render={() => (user ? <Redirect to="/gallery" /> : <Login />)}
+          render={() => (user ? <Redirect to="/" /> : <Login />)}
         />
         <Route
           path="/gallery"
@@ -91,8 +90,8 @@ function App() {
             user ? <Gallery /> : <Redirect to="/login" />;
           }}
         />
-        <Route path="/movies" />
-        <Route path = "/signup"/>
+
+        <Route path="/signup" />
         <Signup />
         <Route />
       </Switch>
