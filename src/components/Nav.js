@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "../Pages/Search";
 
 const Nav = (props) => {
   return (
@@ -17,7 +18,7 @@ const Nav = (props) => {
         <div>Favourites</div>
       </Link>
       <Link to="/search">
-        <div>Search</div>
+        <Search />
       </Link>
       <Link to="/login">
         <div>Login</div>

@@ -7,8 +7,8 @@ import Serials from "./Pages/Serials";
 import Login from "./Pages/Login";
 import Movie from "./Pages/Movie";
 import Favourites from "./Pages/Favourites";
-import Search from "./Pages/Search";
 import Nav from "./components/Nav";
+import Search from "./Pages/Search";
 import { auth } from "./services/firebase";
 
 
@@ -39,35 +39,12 @@ function App() {
 
   //Setting up authentication
   const [user, setUser] = useState(null);
- 
 
-  //reviews helper functions
-  // const getReviews = async () => {
-  //   if (!user) return;
-
-  // get a secure id token from our firebase user
-//   const token = await user.getIdToken();
-//   const response = await fetch(API_URL, {
-//     method: 'GET',
-//     headers: {
-//       'Authorization': 'Bearer ' + token
-//     }
-//   });
-//   // const reviews = await response.json();
-//   // setReviews(reviews);
-// }// get a secure id token from our firebase user
-
-
-
-// const createReview = async person => {
-// const data = {...person, managedBy: user.uid} // attach logged in user's uid to the data we send to the server
-// await fetch(API_URL, {
-//   method: 'POST', 
-//   headers: {'Content-type': 'Application/json'},
-//   body: JSON.stringify(data)
-// });
-// getReviews(); // we can now refresh our list of contacts
-// } 
+  const [searchValue, setSearchValue] = useState("");
+  
+  const getMovieRequest = async(searchValue)=>{
+    const url = "https://api.themoviedb.org/3/search/company?api_key=553ff4c7632836ac15fb42f83753edfd&page=1"
+  }
 
 useEffect(() => {
   const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
@@ -101,8 +78,8 @@ useEffect(() => {
           <Favourites />
         </Route>
         <Route path="/search">
-          <Nav />
-          <Search />
+          <Search searchValue = {searchValue} setSearchValue = {setSearchValue} />
+      
         </Route>
         <Route
           path="/login"

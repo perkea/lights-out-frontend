@@ -1,6 +1,5 @@
 
 import Ratings from "./Rating";
-// import { useState, useEffect } from "react";
 import Review from "./Review";
 
 const Movie = (props) => {
