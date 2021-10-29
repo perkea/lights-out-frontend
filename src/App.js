@@ -5,11 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Gallery from "./Pages/Gallery";
 import Serials from "./Pages/Serials";
 import Login from "./Pages/Login";
-import Movies from "./Pages/Movies";
+import Movie from "./Pages/Movie";
 import Favourites from "./Pages/Favourites";
 import Search from "./Pages/Search";
 import Nav from "./components/Nav";
 import { auth } from "./services/firebase";
+
 
 function App() {
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
@@ -90,7 +91,7 @@ useEffect(() => {
         </Route>
         <Route
           path="/movies/:id"
-          render={(rp) => <Movies {...rp} movies={movies} />}
+          render={(rp) => <Movie {...rp} movies={movies} />}
         />
         {/* <Route path="/movies">
           <Movies />
