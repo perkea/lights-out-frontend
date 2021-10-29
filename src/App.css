@@ -149,7 +149,9 @@ background-image: url("../public/Images/Coco_dominates_Chinese_box_office_.jpeg"
   background-color: var(--main-color1);
 
 }
-
+.signup_container{
+  background-image: url("../public/Images/Coco_dominates_Chinese_box_office_.jpeg");
+}
 /* Rating */
 button {
   background-color: transparent;
@@ -166,3 +168,8 @@ button {
   color: #ccc;
 }
 
+/*Movie Card */
+.movie_component{
+background-color: mediumblue;
+
+}
