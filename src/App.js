@@ -11,19 +11,18 @@ import Nav from "./components/Nav";
 import Search from "./Pages/Search";
 import { auth } from "./services/firebase";
 
-
 function App() {
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
   //const url = `https://api.themoviedb.org/3/movie/popular?api_key=5${apiKey}&language=en-US&page=20`;
   const url =
     "https://api.themoviedb.org/3/movie/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
+  
 
   console.log("the url", url);
   console.log("length", url.length);
   const [movies, setMovies] = useState(null);
   const [requestedMovies, setRequestedMovies] = useState(false);
-  // const [reviews, setReviews] = useState([]);
-  // const API_URL = "http://localhost:3001/api/reviews";
+  
 
   //function to fetch movie data
   const getMovies = async () => {
@@ -41,16 +40,17 @@ function App() {
   const [user, setUser] = useState(null);
 
   const [searchValue, setSearchValue] = useState("");
-  
-  const getMovieRequest = async(searchValue)=>{
-    const url = "https://api.themoviedb.org/3/search/company?api_key=553ff4c7632836ac15fb42f83753edfd&page=1"
-  }
 
-useEffect(() => {
-  const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
-  // getReviews();
-  return()=> unsuscribe()
-}, [user]);
+  const getMovieRequest = async (searchValue) => {
+    const url =
+      "https://api.themoviedb.org/3/search/company?api_key=553ff4c7632836ac15fb42f83753edfd&page=1";
+  };
+
+  useEffect(() => {
+    const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
+    // getReviews();
+    return () => unsuscribe();
+  }, [user]);
   return (
     <div>
       <Switch>
@@ -78,8 +78,7 @@ useEffect(() => {
           <Favourites />
         </Route>
         <Route path="/search">
-          <Search searchValue = {searchValue} setSearchValue = {setSearchValue} />
-      
+          <Search searchValue={searchValue} setSearchValue={setSearchValue} />
         </Route>
         <Route
           path="/login"
@@ -91,9 +90,7 @@ useEffect(() => {
             user ? <Gallery /> : <Redirect to="/login" />;
           }}
         />
-        <Route path = "/movies" 
-           />
-
+        <Route path="/movies" />
       </Switch>
     </div>
   );
