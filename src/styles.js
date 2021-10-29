@@ -52,3 +52,7 @@ export const StyledFooter = styled.footer`
     height: 5rem;
     justify-content: center;
 `;
+
+// export const StyledSignUp = styled.signup `
+//    background-image:url("frontend/public/Images/Coco_dominates_Chinese_box_office_.jpeg"); 
+

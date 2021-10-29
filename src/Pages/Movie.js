@@ -9,7 +9,7 @@ const Movie = (props) => {
   console.log("all the movies", props.movies);
 
   const movie_id = props.match.params.id;
-  const movie_url = `https://api.themoviedb.org/3/movie/${movie_id}/lists?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=1`;
+  const movie_url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US`;
   const [movie, setMovie] = useState(null);
 
   const getMovieRequest = async () => {
@@ -44,10 +44,11 @@ const Movie = (props) => {
   const loaded = ()=>{
     return (
       <div>
-Loaded
-{movie.results.description}
-{movie.name}
-{movie.results.name}
+ <img src={imageUrl + "/" + movie.poster_path} alt="" />
+<p>{movie.overview}</p>
+<h4>{movie.release_date}</h4>
+
+
 
       </div>
     )

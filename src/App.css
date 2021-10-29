@@ -27,6 +27,11 @@
 body {
   background-image: linear-gradient(to right, #cb2d3e, --main-color1);
 }
+/* Sign up */
+/* .signUp{
+background-image: url("../public/Images/Coco_dominates_Chinese_box_office_.jpeg");
+
+} */
 
 .searchBox {
   position: absolute;
@@ -160,3 +165,4 @@ button {
 .off {
   color: #ccc;
 }
+

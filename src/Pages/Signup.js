@@ -1,5 +1,18 @@
-// import React from "react";
+ import React from "react";
+import { render } from "react-dom";
+import "./App.css"
 
+
+
+ const SignUp = props =>{
+   
+   return(
+
+    <h1 className = "signUp" style = {{backgroundImage: "url(/Images/Coco_dominates_Chinese_box_office_.jpeg)"}}>Sign Up</h1>
+   )
+
+
+ }
 // const Signup = (props) => {
 //   return (
 //     <div className = "signup_page">
@@ -36,4 +49,4 @@
 //   );
 // };
 
-// export default Signup;
+export default Signup;
