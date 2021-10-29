@@ -113,15 +113,9 @@ useEffect(() => {
             user ? <Gallery /> : <Redirect to="/login" />;
           }}
         />
-        <Route path = "/movies" render = {()=>(
-         user? (
-           <Movies 
-          //  reviews = {reviews}
-          //  createReview = {createReview}
+        <Route path = "/movies" 
            />
-         
-         ) : <Redirect to ="/login"/>
-  )} />
+
       </Switch>
     </div>
   );

@@ -1,48 +1,30 @@
 import React, { useState } from "react";
 import { StyledMain } from "../styles";
-import {signIn }from "../services/firebase"
+import { signIn } from "../services/firebase";
 
+const Login = (props) => {
+  return (
+    <StyledMain>
+      <h1>Login</h1>
+      <button onClick={signIn}>Sign in with Google</button>
+    </StyledMain>
+  );
+};
 
-const Login = (props)=>{
-return(
-<StyledMain>
-<h1>Login</h1>
-<button onClick = {signIn}>Sign in with Google</button>
-
-</StyledMain>
-
-)
-}
-
-export default Login
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Login;
 
 // const Login = (props) => {
 //   const [username, setUsername] = useState("");
 //   const [password, setPassword] = useState("");
 
 //   function handleSubmit(event) {
-//     //   
+//     //
 //     event.preventDefault();
 //   }
 
 //   return (
 //     <div>
-     
+
 //       <form onSubmit={handleSubmit}>
 //         <label>Username</label>
 //         <input
