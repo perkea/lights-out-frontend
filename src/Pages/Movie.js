@@ -43,7 +43,7 @@ const Movie = (props) => {
 
   const loaded = ()=>{
     return (
-      <div>
+      <div className = "movie_component">
  <img src={imageUrl + "/" + movie.poster_path} alt="" />
 <p>{movie.overview}</p>
 <h4>{movie.release_date}</h4>
