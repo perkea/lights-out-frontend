@@ -1,18 +1,8 @@
- import React from "react";
-import { render } from "react-dom";
-import "./App.css"
+import React from "react";
 
-
-
- const SignUp = props =>{
-   
-   return(
-
-    <h1 className = "signUp_container">Sign Up</h1>
-   )
-
-
- }
+const Signup = (props) => {
+  return <h1 className="signUp_container">Sign Up</h1>;
+};
 // const Signup = (props) => {
 //   return (
 //     <div className = "signup_page">
