@@ -151,6 +151,7 @@ background-image: url("../public/Images/Coco_dominates_Chinese_box_office_.jpeg"
 }
 .signup_container{
   background-image: url("../src/Images/Coco_dominates_Chinese_box_office_.jpeg");
+  background-color: mediumpurple;
 }
 /* Rating */
 button {
