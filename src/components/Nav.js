@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Search from "../Pages/Search";
-import { BrowserRouter as Router } from "react-router-dom";
+
+
 
 const Nav = (props) => {
   return (
@@ -18,7 +18,6 @@ const Nav = (props) => {
         <Link to="/favourites">
           <div>Favourites</div>
         </Link>
-
         <Link to="/search"></Link>
         <Link to="/login">
           <div>Login</div>
