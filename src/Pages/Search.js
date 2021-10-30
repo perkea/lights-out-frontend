@@ -17,13 +17,15 @@ const SearchBox = (props) => {
                                         <input 
                                         class="form-control form-control-lg form-control-borderless" 
                                         type="search" 
-                                        placeholder="Search movie or serial"
+                                        placeholder="Type a movie or serial"
                                         value = {props.value}
-                                        onChange = {event}/>
+                                        onChange = {(event)=>{
+props.setSearchValue(event.target.value)
+                                        }}/>
                                     </div>
                                   
                                     <div class="col-auto">
-                                        <button class="btn btn-lg btn-success" type="submit">Search</button>
+                                        <button class="btn btn-lg btn-success" type="submit">Search for a movie or serial</button>
                                     </div>
                                
                                 </div>
@@ -36,37 +38,10 @@ const SearchBox = (props) => {
 
 
 
+  )}
 
 
 
-
-		{/* <div className='col col-sm-4'>
-			<input
-				className='form-control'
-				value={props.value}
-				onChange={(event) => props.setSearchValue(event.target.value)}
-				placeholder='Type to search...'
-			></input>
-		</div> */}
-	);
-};
-
-// const Search = (props) => {
-//   return (
-//     <div className="searchBox">
-//       <input className="searchInput" type="text" name="" placeholder="Search" />
-//       <button className="searchButton" href="#">
-//         <input
-//           type="text"
-//           className="searchForm"
-//           value={props.value}
-//           onChange={(e) => props.setSearchValue(e.target.value)}
-//           placeholder="Search for a movie"
-//         />
-//         <i className="material-icons">search</i>
-//       </button>
-//     </div>
-//   );
-// };
+	
 
 export default Search;
