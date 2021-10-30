@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 const Movie = (props) => {
   const imageWidth = "w300";
   const imageUrl = `https://image.tmdb.org/t/p/${imageWidth}/`;
-
   console.log("all the movies", props.movies);
 
   const movie_id = props.match.params.id;
@@ -41,22 +40,19 @@ const Movie = (props) => {
   //   }
   //   console.log("the movie i want", movie, movies, id);
 
-  const loaded = ()=>{
+  const loaded = () => {
     return (
-      <div className = "movie_component">
- <img src={imageUrl + "/" + movie.poster_path} alt="" />
-<p>{movie.overview}</p>
-<h4>{movie.release_date}</h4>
-
-
-
+      <div className="movie_component">
+        <img src={imageUrl + "/" + movie.poster_path} alt="" />
+        <p>{movie.overview}</p>
+        <h4>{movie.release_date}</h4>
       </div>
-    )
-  }
+    );
+  };
 
-  const loading = ()=>{
-    return <h1>Loading......</h1>
-  }
+  const loading = () => {
+    return <h1>Loading......</h1>;
+  };
   // return (
   //   <div>
   //     <img src={imageUrl + "/" + movie.poster_path} alt="" />
