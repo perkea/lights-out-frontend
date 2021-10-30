@@ -17,7 +17,8 @@ function App() {
   //const url = `https://api.themoviedb.org/3/movie/popular?api_key=5${apiKey}&language=en-US&page=20`;
   const url =
     "https://api.themoviedb.org/3/movie/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
-const serial_url = "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100"
+  const serial_url =
+    "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
   console.log("the url", url);
   console.log("length", url.length);
   const [movies, setMovies] = useState(null);
@@ -38,7 +39,7 @@ const serial_url = "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c76328
   }
 
   //function to fetch serial data
-  const getSerials= async () => {
+  const getSerials = async () => {
     const response = await fetch(serial_url);
     const data = await response.json();
     console.log("serial data got back", data);
@@ -48,7 +49,7 @@ const serial_url = "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c76328
     setRequestedSerials(true);
     getSerials();
   }
- 
+
   //Setting up authentication
   const [user, setUser] = useState(null);
 
@@ -69,7 +70,6 @@ const serial_url = "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c76328
       <Switch>
         <Route exact path="/">
           <Nav user={user} />
-          
           <div className="container movie-app">
             <div className="row">
               <Gallery movies={movies} />
@@ -78,8 +78,7 @@ const serial_url = "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c76328
         </Route>
         <Route path="/serials">
           <Nav />
-         
-          <Serials  serials = {serials}/>
+          <Serials serials={serials} />
         </Route>
         <Route
           path="/movies/:id"
@@ -105,11 +104,9 @@ const serial_url = "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c76328
             user ? <Gallery /> : <Redirect to="/login" />;
           }}
         />
-
-        <Route path="/signup" />
-        <Redirect to ="/"/>
-        <Signup />
-        <Route />
+        <Route path="/signup">
+            <Signup />
+        </Route>
       </Switch>
     </div>
   );
