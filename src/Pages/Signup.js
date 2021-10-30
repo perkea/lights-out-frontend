@@ -1,7 +1,7 @@
 import React from "react";
 
 const Signup = (props) => {
-  return <h1 className="signUp_container">Sign Up</h1>;
+  return <h1 className="signup_container">Sign Up</h1>;
 };
 // const Signup = (props) => {
 //   return (
