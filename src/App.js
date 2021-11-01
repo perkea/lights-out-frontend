@@ -11,7 +11,7 @@ import Nav from "./components/Nav";
 import Search from "./Pages/SearchBox";
 import { auth } from "./services/firebase";
 import Signup from "./Pages/Signup";
-import Reviews from "./Pages/Review"
+
 
 function App() {
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
@@ -64,10 +64,10 @@ function App() {
 
   const [searchValue, setSearchValue] = useState("");
 
-  const getMovieRequest = async (searchValue) => {
-    const url =
-      "https://api.themoviedb.org/3/search/company?api_key=553ff4c7632836ac15fb42f83753edfd&page=1";
-  };
+  // const getMovieRequest = async (searchValue) => {
+  //   const url =
+  //     "https://api.themoviedb.org/3/search/company?api_key=553ff4c7632836ac15fb42f83753edfd&page=1";
+  // };
 
   useEffect(() => {
     const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
