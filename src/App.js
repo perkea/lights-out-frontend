@@ -8,9 +8,10 @@ import Login from "./Pages/Login";
 import Movie from "./Pages/Movie";
 import Favourites from "./Pages/Favourites";
 import Nav from "./components/Nav";
-import Search from "./Pages/Search";
+import Search from "./Pages/SearchBox";
 import { auth } from "./services/firebase";
 import Signup from "./Pages/Signup";
+import Reviews from "./Pages/Review"
 
 function App() {
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
@@ -25,6 +26,7 @@ function App() {
   const [requestedMovies, setRequestedMovies] = useState(false);
   const [serials, setSerials] = useState(null);
   const [requestedSerials, setRequestedSerials] = useState(false);
+  
 
   //function to fetch movie data
   const getMovies = async () => {
@@ -49,6 +51,13 @@ function App() {
     setRequestedSerials(true);
     getSerials();
   }
+
+
+
+
+    // const getMovieRequest = async(searchValue)=>{
+// const search_movie_url = ``
+//   }
 
   //Setting up authentication
   const [user, setUser] = useState(null);
@@ -82,7 +91,7 @@ function App() {
         </Route>
         <Route
           path="/movies/:id"
-          render={(rp) => <Movie {...rp} movies={movies} />}
+          render={(rp) => <Movie {...rp} movies={movies}/>}
         />
 
         <Route path="/favourites">

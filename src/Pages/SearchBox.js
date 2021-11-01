@@ -6,16 +6,16 @@ const SearchBox = (props) => {
 <div class="container">
     <br/>
 	<div class="row justify-content-center">
-                        <div class="col-12 col-md-10 col-lg-8">
-                            <form class="card card-sm">
-                                <div class="card-body row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                        <i class="fas fa-search h4 text-body"></i>
+                        <div className="col-12 col-md-10 col-lg-8">
+                            <form className="card card-sm">
+                                <div className="card-body row no-gutters align-items-center">
+                                    <div className="col-auto">
+                                        <i className="fas fa-search h4 text-body"></i>
                                     </div>
                                    
-                                    <div class="col">
+                                    <div className="col">
                                         <input 
-                                        class="form-control form-control-lg form-control-borderless" 
+                                        className="form-control form-control-lg form-control-borderless" 
                                         type="search" 
                                         placeholder="Type a movie or serial"
                                         value = {props.value}
@@ -24,8 +24,8 @@ props.setSearchValue(event.target.value)
                                         }}/>
                                     </div>
                                   
-                                    <div class="col-auto">
-                                        <button class="btn btn-lg btn-success" type="submit">Search for a movie or serial</button>
+                                    <div className="col-auto">
+                                        <button className="btn btn-lg btn-success" type="submit">Search for a movie or serial</button>
                                     </div>
                                
                                 </div>
