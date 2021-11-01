@@ -10,6 +10,16 @@ const Movie = (props) => {
   const movie_id = props.match.params.id;
   const movie_url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US`;
   const [movie, setMovie] = useState(null);
+  const [reviews, setReviews] = useState({
+reviews : [],
+newReview : {
+  review : "",
+  rating: ""
+}
+  });
+
+
+
 
   const getMovieRequest = async () => {
     const response = await fetch(movie_url);
@@ -40,12 +50,13 @@ const Movie = (props) => {
   //   }
   //   console.log("the movie i want", movie, movies, id);
 
-  const loaded = () => {
+  const loaded = (props) => {
     return (
       <div className="movie_component">
         <img src={imageUrl + "/" + movie.poster_path} alt="" />
         <p>{movie.overview}</p>
         <h4>{movie.release_date}</h4>
+        <Review review={props.review} />
       </div>
     );
   };
