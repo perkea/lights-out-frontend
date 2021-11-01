@@ -9,7 +9,12 @@ const Movie = (props) => {
   const movie_url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US`;
   const [movie, setMovie] = useState(null);
   const [reviews, setReviews] = useState([]);
-  const [review, setReview] = useState({ comment: "", rating: "5" });
+  const [review, setReview] = useState({
+    newReview: {
+      comment: "",
+      rating: "5",
+    },
+  });
 
   const getMovieRequest = async () => {
     const response = await fetch(movie_url);
@@ -25,6 +30,14 @@ const Movie = (props) => {
   console.log("the movie I chose", movie);
 
   //helper functions for reviews state
+  function handleChange(event) {
+    setReviews(({ newReview }) => ({
+      newReview: {
+        ...newReview,
+        [event.target.name]: event.target.value,
+      },
+    }));
+  }
   // function handleChange(event) {
   //   setReviews(({ reviews, newReview }) => ({
   //     reviews,
@@ -63,7 +76,9 @@ const Movie = (props) => {
   // }, []);
 
   async function getReviews() {
-    const response = await fetch(`http://localhost:4000/reviews/moviesearch/${movie_id}`);
+    const response = await fetch(
+      `http://localhost:4000/reviews/moviesearch/${movie_id}`
+    );
     const reviews = await response.json();
     console.log("all the reviews", reviews);
     setReviews(reviews.review);
@@ -81,15 +96,20 @@ const Movie = (props) => {
         <img src={imageUrl + "/" + movie.poster_path} alt="" />
         <p>{movie.overview}</p>
         <h4>{movie.release_date}</h4>
-      {/* {reviews} */}
+        {/* {reviews} */}
         <h2>Reviews</h2>
         <hr />
         <ul>
-          {reviews.length <= 0 ? '' : reviews.map((r,index) => <li><article key={index}>
-              <div>{r.review}</div>
-              <div>{r.rating}</div>
-            </article></li>
-          )}
+          {reviews.length <= 0
+            ? ""
+            : reviews.map((r, index) => (
+                <li>
+                  <article key={index}>
+                    <div>{r.review}</div>
+                    <div>{r.rating}</div>
+                  </article>
+                </li>
+              ))}
         </ul>
         {/* <ul>
           <li> {reviews.reviews}</li>
