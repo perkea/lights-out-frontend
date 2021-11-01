@@ -63,39 +63,47 @@ const Movie = (props) => {
   // }, []);
 
   async function getReviews() {
-    const response = await fetch("http://localhost:4000/reviews/");
+    const response = await fetch(`http://localhost:4000/reviews/moviesearch/${movie_id}`);
     const reviews = await response.json();
     console.log("all the reviews", reviews);
-    setReviews(reviews);
+    setReviews(reviews.review);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getReviews();
   }, []);
   console.log("all the reviews", reviews);
 
   const loaded = (props) => {
+    console.log("render loaded ", reviews);
     return (
       <div className="movie_component">
         <img src={imageUrl + "/" + movie.poster_path} alt="" />
         <p>{movie.overview}</p>
         <h4>{movie.release_date}</h4>
-
-        {/* <h2>Reviews</h2>
+      {/* {reviews} */}
+        <h2>Reviews</h2>
         <hr />
         <ul>
-          <li> {reviews.reviews}</li>
+          {reviews.length <= 0 ? '' : reviews.map((r,index) => <li><article key={index}>
+              <div>{r.review}</div>
+              <div>{r.rating}</div>
+            </article></li>
+          )}
         </ul>
+        {/* <ul>
+          <li> {reviews.reviews}</li>
+        </ul> */}
 
-        <h3>Add a rating</h3>
+        {/* <h3>Add a rating</h3>
         <hr />
         {reviews.reviews.map((r) => {
           <article key={r.review}>
             <div>{r.review}</div>
             <div>{r.rating}</div>
           </article>;
-        })}
-        <form className="reviewForm" onSubmit={handleSubmit}>
+        })} */}
+        {/* <form className="reviewForm" onSubmit={handleSubmit}>
           <label>
             <span>Leave a Rating</span>
             <select
@@ -122,8 +130,8 @@ const Movie = (props) => {
           ></textarea>
 
           <button type="submit">Add Review</button>
-        </form>
-        <section /> */}
+        </form> */}
+        <section />
       </div>
     );
   };
