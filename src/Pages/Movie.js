@@ -11,15 +11,23 @@ const Movie = (props) => {
   const movie_url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US`;
   const [movie, setMovie] = useState(null);
   const [reviews, setReviews] = useState({
-reviews : [],
-newReview : {
-  review : "",
-  rating: ""
-}
+    reviews: [],
+    newReview: {
+      review: "",
+      rating: "",
+    },
   });
 
-
-
+  //helper functions for reviews state
+  function handleChange(event) {
+    setReviews(({ reviews, newReview }) => ({
+      reviews,
+      newReview: {
+        ...newReview,
+        newReview: event.target.value,
+      },
+    }));
+  }
 
   const getMovieRequest = async () => {
     const response = await fetch(movie_url);
