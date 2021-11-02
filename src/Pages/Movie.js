@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { auth } from '../services/firebase';
+// import Button from '@mui/material/Button';
 
 const Movie = (props) => {
   const imageWidth = "w300";
@@ -7,15 +9,19 @@ const Movie = (props) => {
 
   const movie_id = props.match.params.id;
   const movie_url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US`;
+  const [ user, setUser ] = useState(null);
   const [movie, setMovie] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [review, setReview] = useState({
-    newReview: {
-      comment: "",
-      rating: "5",
-    },
+    comment: "",
+    rating: "5",
   });
+  const [display, setDisplay] = useState({});
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => setUser(user));  
+    return () => unsubscribe();
+}, []);
   const getMovieRequest = async () => {
     const response = await fetch(movie_url);
     console.log("the response from the server", response);
@@ -30,13 +36,56 @@ const Movie = (props) => {
   console.log("the movie I chose", movie);
 
   //helper functions for reviews state
-  function handleChange(event) {
-    setReviews(({ newReview }) => ({
-      newReview: {
-        ...newReview,
-        [event.target.name]: event.target.value,
+  // function handleChange(event) {
+  //   setReviews(({ newReview }) => ({
+  //     newReview: {
+  //       ...newReview,
+  //       [event.target.name]: event.target.value,
+  //     },
+  //   }));
+  // }
+
+  // async function handleSubmit(event) {
+  //   // event.preventDefault();
+  //   await fetch(`http://localhost:4000/reviews/`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-type": "Application.json",
+  //     },
+  //     body: JSON.stringify(review.newReview),
+  //   });
+  // }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    let toSaveReview = {
+      ...review,
+      movieId: movie_id
+    };
+    console.log("my review", toSaveReview);
+    await fetch(`http://localhost:4000/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-type": "Application/json",
       },
+      body: JSON.stringify(toSaveReview)
+    });
+
+
+    getReviews();
+    setReview((prevState) => ({
+      ...prevState,
+      comment: "",
+      rating: "",
     }));
+  }
+  function handleChangeReview(event) {
+    setReview({  ...review, comment: event.target.value });
+  }
+
+  function handleChangeRating(event) {
+    setReview({ ...review, rating: event.target.value });
   }
   // function handleChange(event) {
   //   setReviews(({ reviews, newReview }) => ({
@@ -60,35 +109,21 @@ const Movie = (props) => {
   // }
   // We need to make an HTTP request to localhost:3001/reviews
   // once we recieve the data we will use it to set our component state with reviews data
-  // async function getReviews() {
-  //   const response = await fetch("http://localhost:4000/reviews/");
-  //   const reviews = await response.json();
 
-  //   setReviews((prevState) => ({
-  //     reviews,
-  //     newReview: prevState.newReview,
-  //   }));
-  // }
-
-  // useEffect(() => {
-  //   getReviews(); // we're calling this during the initial load phase
-  //   // this way out component has data as soon as the user lands on the page
-  // }, []);
 
   async function getReviews() {
     const response = await fetch(
       `http://localhost:4000/reviews/moviesearch/${movie_id}`
     );
-    const reviews = await response.json();
-    console.log("all the reviews", reviews);
-    setReviews(reviews.review);
+    const result = await response.json();
+    console.log("all the reviews", result);
+    setReviews(result.review);
   }
 
   useEffect(() => {
     getReviews();
   }, []);
   console.log("all the reviews", reviews);
-
   const loaded = (props) => {
     console.log("render loaded ", reviews);
     return (
@@ -105,12 +140,52 @@ const Movie = (props) => {
             : reviews.map((r, index) => (
                 <li>
                   <article key={index}>
-                    <div>{r.review}</div>
+                    <div>{r.comment}</div>
                     <div>{r.rating}</div>
                   </article>
                 </li>
               ))}
         </ul>
+
+        <h2>Would you like to leave a Rating</h2>
+        <hr />
+
+        {/* <article>
+                    <div>{review.rating}</div>
+                    <h2>Write a Review</h2>
+                    <div>{review.comment}</div>
+                  </article> */}
+
+        <form onSubmit={handleSubmit}>
+          <label>
+            <span>Review</span>
+            <textarea
+              id="comment"
+              cols="35"
+              rows="4"
+              className="reviewForm"
+              name="comment"
+              value={review.comment}
+              onChange={handleChangeReview}
+            ></textarea>
+          </label>
+          <label>
+            <span>Rating</span>
+            <select
+              name="rating"
+              value={review.rating}
+              onChange={handleChangeRating}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+          <button>ADD REVIEW</button>
+        </form>
+
         {/* <ul>
           <li> {reviews.reviews}</li>
         </ul> */}
