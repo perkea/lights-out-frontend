@@ -53,27 +53,7 @@ const Movie = (props) => {
   }, []);
   console.log("the movie I chose", movie);
 
-  //helper functions for reviews state
-  // function handleChange(event) {
-  //   setReviews(({ newReview }) => ({
-  //     newReview: {
-  //       ...newReview,
-  //       [event.target.name]: event.target.value,
-  //     },
-  //   }));
-  // }
-
-  // async function handleSubmit(event) {
-  //   // event.preventDefault();
-  //   await fetch(`http://localhost:4000/reviews/`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "Application.json",
-  //     },
-  //     body: JSON.stringify(review.newReview),
-  //   });
-  // }
-
+ 
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -104,28 +84,7 @@ const Movie = (props) => {
   function handleChangeRating(event) {
     setReview({ ...review, rating: event.target.value });
   }
-  // function handleChange(event) {
-  //   setReviews(({ reviews, newReview }) => ({
-  //     reviews,
-  //     newReview: {
-  //       ...newReview,
-  //       [event.target.name]: event.target.value,
-  //     },
-  //   }));
-  // }
-
-  // async function handleSubmit(event) {
-  //   event.preventDefault();
-  //   await fetch("http://localhost:4000/reviews/", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "Application/json",
-  //     },
-  //     body: JSON.stringify(reviews.newReview),
-  //   });
-  // }
-  // We need to make an HTTP request to localhost:3001/reviews
-  // once we recieve the data we will use it to set our component state with reviews data
+ 
 
   async function getReviews() {
     const response = await fetch(
@@ -207,16 +166,7 @@ const Movie = (props) => {
   const loading = () => {
     return <h1>Loading......</h1>;
   };
-  // return (
-  //   <div>
-  //     <img src={imageUrl + "/" + movie.poster_path} alt="" />
-  //     <h1>{movie.title}</h1>
-  //     <p>{movie.release_date}</p>
-  //     <p>{movie.overview}</p>
-  //     <Ratings />
-  //     <Review />
-  //   </div>
-  // );
+  
   return movie ? loaded() : loading();
 };
 
