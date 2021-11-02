@@ -22,6 +22,7 @@ function App() {
     "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
   console.log("the url", url);
   console.log("length", url.length);
+  const [user, setUser] = useState(null);
   const [movies, setMovies] = useState(null);
   const [requestedMovies, setRequestedMovies] = useState(false);
   const [serials, setSerials] = useState(null);
@@ -59,8 +60,7 @@ function App() {
 // const search_movie_url = ``
 //   }
 
-  //Setting up authentication
-  const [user, setUser] = useState(null);
+  
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -71,9 +71,9 @@ function App() {
 
   useEffect(() => {
     const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
-    // getReviews();
+   
     return () => unsuscribe();
-  }, [user]);
+  }, []);
   return (
     <div>
       <Switch>
@@ -81,14 +81,18 @@ function App() {
           <Nav user={user} />
           <div className="container movie-app">
             <div className="row">
-              <Gallery movies={movies} />
+              <Gallery movies={movies}  user = {user}/>
             </div>
           </div>
         </Route>
+
         <Route path="/serials">
           <Nav />
           <Serials serials={serials} />
         </Route>
+        
+        
+        
         <Route
           path="/movies/:id"
           render={(rp) => <Movie {...rp} movies={movies}/>}
