@@ -1,8 +1,22 @@
-import { Link, Redirect } from "react-router-dom";
+import { Link as ReactLink, Redirect } from "react-router-dom";
 import { logOut } from "../services/firebase";
 import { auth } from "../services/firebase";
 import { useState, useEffect } from "react";
+import { AppBar } from "@mui/material";
+import { Toolbar } from "@mui/material";
+import { Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { Button } from "@mui/material";
+import { MenuIcon } from "@mui/material";
+import { Link } from "@mui/material";
+// import { makeStyles } from "@mui/material";
 
+
+// const useStyles = makeStyles({
+//   logo: {
+//     maxWidth: 160,
+//   },
+// });
 const Nav = (props) => {
   const [user, setUser] = useState(null);
 
@@ -12,49 +26,73 @@ const Nav = (props) => {
   }, []);
 
   return (
-    <div className="nav">
-      <Link to="/">
-        <div>Movie Gallery</div>
-      </Link>
-      <Link to="/serials">
-        <div>Serials</div>
-      </Link>
-      <Link to="/movies">
-        <div>Movies</div>
-      </Link>
-      <Link to="/favourites">
-        <div>Favourites</div>
-      </Link>
-      <Link to="/search"></Link>
-      {props.user ? (
-        <>
-          <h1 onClick={logOut} className="logButtons">
-            Logout
-          </h1>
-          <p className="userName" id="displayName">
-            Welcome, {props.user.displayName}
-          </p>
-          <p>
-            <img
-              src={props.user.photoURL}
-              alt={props.user.displayName}
-              className="userName"
-              id="userPhoto"
-            />
-          </p>
-        </>
-      ) : (
-        <Link to="/login">
-          <div>Login</div>
+    <AppBar position="static">
+      <Toolbar className="toolbar">
+        <Link>
+          <img style={{width: "128px", height: "105px",}} src="Images/movie_night.png" alt="logo"/>
         </Link>
-      )}
-      <Link to="/signup">
-        <div>Signup</div>
-      </Link>
-      <Link to="/search">
-        <div>Search</div>
-      </Link>
-    </div>
+        <Link href="/movies">
+          <div>Movies</div>
+        </Link>
+        <Link href="/search">
+          <div>Search</div>
+        </Link>
+        <Link href="/favourites">
+          <div>Favourites</div>
+        </Link>
+        <Link to="/signup">
+          <div>Signup</div>
+        </Link>
+      </Toolbar>
+    </AppBar>
+
+    //   <IconButton edge="start" color="inherit" aria-label="menu" >
+    //   {/* <MenuIcon /> */}
+    // </IconButton>
+    // <Typography variant="h6" >Gallery</Typography>
+    // <Button color="inherit">Signup</Button>
+    // <div className="nav">
+    //   <Link to="/">
+
+    //   </Link>
+    //   <Link to="/serials">
+    //     <div>Serials</div>
+    //   </Link>
+    //   <Link to="/movies">
+    //     <div>Movies</div>
+    //   </Link>
+    //   <Link to="/favourites">
+    //     <div>Favourites</div>
+    //   </Link>
+    //   <Link to="/search"></Link>
+    //   {props.user ? (
+    //     <>
+    //       <h1 onClick={logOut} className="logButtons">
+    //         Logout
+    //       </h1>
+    //       <p className="userName" id="displayName">
+    //         Welcome, {props.user.displayName}
+    //       </p>
+    //       <p>
+    //         <img
+    //           src={props.user.photoURL}
+    //           alt={props.user.displayName}
+    //           className="userName"
+    //           id="userPhoto"
+    //         />
+    //       </p>
+    //     </>
+    //   ) : (
+    //     <Link to="/login">
+    //       <div>Login</div>
+    //     </Link>
+    //   )}
+    //   <Link to="/signup">
+    //     <div>Signup</div>
+    //   </Link>
+    //   <Link to="/search">
+    //   </Link>
+    // </div>
   );
 };
 

@@ -5,13 +5,23 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Rating from "@mui/material/Rating";
-import Typography  from "@mui/material/Typography";
-import { palette } from '@mui/system'
-
-
+import Typography from "@mui/material/Typography";
+import { palette } from "@mui/system";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import useDarkMode from "../components/useDarkMode";
+import { Switch as Swt } from "@mui/material";
 
 const Movie = (props) => {
-  
+  const [mode, toggleMode] = useDarkMode();
+  const theme = createTheme(
+    {
+      palatte: {
+        mode: mode,
+      },
+    },
+    [mode]
+  );
+
   const imageWidth = "w300";
   const imageUrl = `https://image.tmdb.org/t/p/${imageWidth}/`;
   console.log("all the movies", props.movies);
@@ -133,169 +143,64 @@ const Movie = (props) => {
   const loaded = (props) => {
     console.log("render loaded ", reviews);
     return (
-      <div className="movie_component">
-        <img src={imageUrl + "/" + movie.poster_path} alt="" />
-        <p>{movie.overview}</p>
-        <h4>{movie.release_date}</h4>
-        {/* {reviews} */}
-        <h2>Reviews</h2>
-        <hr />
-        <ul>
-          {reviews.length <= 0
-            ? ""
-            : reviews.map((r, index) => (
-                <li>
-                  <article key={index}>
-                    <div>{r.comment}</div>
-                    <div>{r.rating}</div>
-                  </article>
-                </li>
-              ))}
-        </ul>
+      <ThemeProvider theme={mode}>
+        <Swt>
+          <div className="movie_component">
+            <img src={imageUrl + "/" + movie.poster_path} alt="" />
+            <p>{movie.overview}</p>
+            <h4>{movie.release_date}</h4>
+            {/* {reviews} */}
+            <h2>Reviews</h2>
+            <hr />
+            <ul>
+              {reviews.length <= 0
+                ? ""
+                : reviews.map((r, index) => (
+                    <li>
+                      <article key={index}>
+                        <div>{r.comment}</div>
+                        <div>{r.rating}</div>
+                      </article>
+                    </li>
+                  ))}
+            </ul>
 
-        <h2>Would you like to leave a Rating</h2>
-        <hr />
+            <h2>Would you like to leave a Rating</h2>
+            <hr />
 
-        {/* <article>
-                    <div>{review.rating}</div>
-                    <h2>Write a Review</h2>
-                    <div>{review.comment}</div>
-                  </article> */}
-        <Box display="flex" justifyContent="center" alignContent="center">
-          <Paper variant="outlined" square >
-
-    
-    
-            <form onSubmit={handleSubmit}>
-              <TextareaAutosize
-                type="text"
-                name="comment"
-                value={review.comment}
-                className="reviewForm"
-                maxRows={6}
-                aria-label="maximum height"
-                placeholder="Write a Review"
-                style={{ width: 200 }}
-                label="comment"
-                onChange={handleChangeReview}
-              />
-              <Typography component="legend">Would you like to leave a Rating</Typography>
-              <Rating
-                name="rating"
-                value={review.rating}
-                label="rating"
-                onChange={handleChangeRating}
-                
-              />
-              {/* <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option> */}
-              <Button variant="contained" type = "submit">Add Review</Button>
-           
-            </form>
-            {/* <label>
-                <span>Review</span> */}
-            {/* <textarea
-                  id="comment"
-                  cols="35"
-                  rows="4"
-                  className="reviewForm"
-                  name="comment"
-                  value={review.comment}
-                  onChange={handleChangeReview}
-                ></textarea> */}
-            {/* </label>
-              <label>
-                <span>Rating</span>
-                <select
-                  name="rating"
-                  value={review.rating}
-                  onChange={handleChangeRating}
-                >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </label> */}
-            {/* <button>ADD REVIEW</button> */}
-            {/* </form> */}
-          </Paper>
-        </Box>
-        {/* <form onSubmit={handleSubmit}>
-          <label>
-            <span>Review</span>
-            <textarea
-              id="comment"
-              cols="35"
-              rows="4"
-              className="reviewForm"
-              name="comment"
-              value={review.comment}
-              onChange={handleChangeReview}
-            ></textarea>
-          </label>
-          <label>
-            <span>Rating</span>
-            <select
-              name="rating"
-              value={review.rating}
-              onChange={handleChangeRating}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </label>
-          <button>ADD REVIEW</button> */}
-
-        {/* <ul>
-          <li> {reviews.reviews}</li>
-        </ul> */}
-
-        {/* <h3>Add a rating</h3>
-        <hr />
-        {reviews.reviews.map((r) => {
-          <article key={r.review}>
-            <div>{r.review}</div>
-            <div>{r.rating}</div>
-          </article>;
-        })} */}
-        {/* <form className="reviewForm" onSubmit={handleSubmit}>
-          <label>
-            <span>Leave a Rating</span>
-            <select
-              name="rating"
-              value={reviews.newReview.rating}
-              onChange={handleChange}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </label>
-          <label>Submit a Review</label>
-          <textarea
-            id="review"
-            cols="30"
-            rows="10"
-            className="reviewForm"
-            name="review"
-            value={reviews.newReview.review}
-            onChange={handleChange}
-          ></textarea>
-
-          <button type="submit">Add Review</button>
-        </form> */}
-        <section />
-      </div>
+            <Box display="flex" justifyContent="center" alignContent="center">
+              <Paper variant="outlined" square>
+                <form onSubmit={handleSubmit}>
+                  <TextareaAutosize
+                    type="text"
+                    name="comment"
+                    value={review.comment}
+                    className="reviewForm"
+                    maxRows={6}
+                    aria-label="maximum height"
+                    placeholder="Write a Review"
+                    style={{ width: 200 }}
+                    label="comment"
+                    onChange={handleChangeReview}
+                  />
+                  <Typography component="legend">
+                    Would you like to leave a Rating
+                  </Typography>
+                  <Rating
+                    name="rating"
+                    value={review.rating}
+                    label="rating"
+                    onChange={handleChangeRating}
+                  />
+                  <Button variant="contained" type="submit">
+                    Add Review
+                  </Button>
+                </form>
+              </Paper>
+            </Box>
+          </div>
+        </Swt>
+      </ThemeProvider>
     );
   };
 

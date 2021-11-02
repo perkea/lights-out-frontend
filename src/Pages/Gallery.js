@@ -1,7 +1,31 @@
 import React from "react";
-// import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
+import PropTypes from "prop-types";
+import Box from "@mui/material/Box";
 
+function Item(props) {
+  const { sx, ...other } = props;
+  return (
+    <Box
+      sx={{
+        bgcolor: "primary.main",
+        color: "white",
+        p: 1,
+        m: 1,
+        borderRadius: 1,
+        textAlign: "center",
+        fontSize: "1rem",
+        fontWeight: "700",
+        ...sx,
+      }}
+      {...other}
+    />
+  );
+}
 
+Item.propTypes = {
+  sx: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+};
 const Gallery = (props) => {
   const imageWidth = "w300";
   const imageUrl = `https://image.tmdb.org/t/p/${imageWidth}/`;
@@ -9,16 +33,36 @@ const Gallery = (props) => {
   //useEffect to run getMovie when component mounts
 
   const loaded = () => {
-   return (
-      <div>
-        {props.movies.map((movie) => {
-          console.log("the movies got from the api", props.movies);
-          console.log("individual movie", movie);
+    return (
+      <div classNa>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            p: 1,
+            m: 1,
+            bgcolor: "background.paper",
+            maxWidth: 2800,
+          }}
+        >
+          {props.movies.map((movie) => {
+            console.log("the movies got from the api", props.movies);
+            console.log("individual movie", movie);
 
-          return <div className = "image_container d-flex justify-content-start m-3">
-           <img src = "movie_image" src={imageUrl +'/' +movie.poster_path} alt = "movie"/>    
-          </div>;
-        })}
+            return (
+              <Item>
+                <a href={"/movies/" + movie.id}>
+                  {" "}
+                  <img
+                    src="movie_image"
+                    src={imageUrl + "/" + movie.poster_path}
+                    alt="movie"
+                  />{" "}
+                </a>
+              </Item>
+            );
+          })}
+        </Box>
       </div>
     );
   };
@@ -26,7 +70,9 @@ const Gallery = (props) => {
   const loading = () => {
     return <h1>Loading....</h1>;
   };
-  return props.movies? loaded() : loading();
+  return props.movies ? loaded() : loading();
 };
 
 export default Gallery;
+
+

@@ -12,25 +12,50 @@ import Search from "./Pages/SearchBox";
 import { auth } from "./services/firebase";
 import Signup from "./Pages/Signup";
 import { createTheme } from '@mui/material/styles';
+import useDarkMode from "./components/useDarkMode";
+import { red } from '@mui/material/colors';
 
-
+const color = red[700];
 const theme = createTheme({
-  status: {
-    danger: 'ba181b',
-  },
   palette: {
     primary: {
-      main: '#0b090a',
-      darker: '#053e85',
+      light: '#e53935',
+      main: '#1a237e',
+      dark: '#000',
+      contrastText: "#311b92",
     },
-    neutral: {
-      main: '#64748B',
-      contrastText: "#ba181b",
+    secondary: {
+      light: '#ff1744',
+      main: '#ff1744',
+      dark: '#ba000d',
+      contrastText: '#000',
     },
   },
 });
+// const theme = createTheme({
+//   status: {
+//     danger: 'ba181b',
+//   },
+//   palette: {
+//     primary: {
+//       main: '#0b090a',
+//       darker: '#053e85',
+//     },
+//     neutral: {
+//       main: '#64748B',
+//       contrastText: "#ba181b",
+//     },
+//   },
+// });
 
 function App() {
+  const [mode, toggleMode] = useDarkMode();
+  const theme = createTheme({
+palatte:{
+  mode:mode,
+}
+
+  }, [mode])
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
   //const url = `https://api.themoviedb.org/3/movie/popular?api_key=5${apiKey}&language=en-US&page=20`;
   const url =
@@ -92,6 +117,7 @@ function App() {
     return () => unsuscribe();
   }, []);
   return (
+ 
     <div>
       <Switch>
         <Route exact path="/">
@@ -139,6 +165,7 @@ function App() {
         </Route>
       </Switch>
     </div>
+ 
   );
 }
 
