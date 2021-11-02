@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { auth } from '../services/firebase';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box'
-import Paper from '@mui/material/Paper'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField';
+import { auth } from "../services/firebase";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
+import Rating from "@mui/material/Rating";
+import Typography  from "@mui/material/Typography";
+
 
 const Movie = (props) => {
   const imageWidth = "w300";
@@ -13,19 +15,18 @@ const Movie = (props) => {
 
   const movie_id = props.match.params.id;
   const movie_url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US`;
-  const [ user, setUser ] = useState(null);
+  const [user, setUser] = useState(null);
   const [movie, setMovie] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [review, setReview] = useState({
     comment: "",
     rating: "5",
   });
-  const [display, setDisplay] = useState({});
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => setUser(user));  
+    const unsubscribe = auth.onAuthStateChanged((user) => setUser(user));
     return () => unsubscribe();
-}, []);
+  }, []);
   const getMovieRequest = async () => {
     const response = await fetch(movie_url);
     console.log("the response from the server", response);
@@ -65,7 +66,7 @@ const Movie = (props) => {
 
     let toSaveReview = {
       ...review,
-      movieId: movie_id
+      movieId: movie_id,
     };
     console.log("my review", toSaveReview);
     await fetch(`http://localhost:4000/reviews`, {
@@ -73,9 +74,8 @@ const Movie = (props) => {
       headers: {
         "Content-type": "Application/json",
       },
-      body: JSON.stringify(toSaveReview)
+      body: JSON.stringify(toSaveReview),
     });
-
 
     getReviews();
     setReview((prevState) => ({
@@ -85,7 +85,7 @@ const Movie = (props) => {
     }));
   }
   function handleChangeReview(event) {
-    setReview({  ...review, comment: event.target.value });
+    setReview({ ...review, comment: event.target.value });
   }
 
   function handleChangeRating(event) {
@@ -113,7 +113,6 @@ const Movie = (props) => {
   // }
   // We need to make an HTTP request to localhost:3001/reviews
   // once we recieve the data we will use it to set our component state with reviews data
-
 
   async function getReviews() {
     const response = await fetch(
@@ -159,8 +158,68 @@ const Movie = (props) => {
                     <h2>Write a Review</h2>
                     <div>{review.comment}</div>
                   </article> */}
-
-        <form onSubmit={handleSubmit}>
+        <Box display="flex" justifyContent="center" alignContent="center">
+          <Paper>
+            <form onSubmit={handleSubmit}>
+              <TextareaAutosize
+                type="text"
+                name="comment"
+                value={review.comment}
+                className="reviewForm"
+                maxRows={4}
+                aria-label="maximum height"
+                placeholder="Write a Review"
+                style={{ width: 200 }}
+                label="comment"
+                onChange={handleChangeReview}
+              />
+              <Typography component="legend">Would you like to leave a Rating</Typography>
+              <Rating
+                name="rating"
+                value={review.rating}
+                label="rating"
+                onChange={handleChangeRating}
+                
+              />
+              {/* <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option> */}
+              <Button variant="contained">Add Review</Button>
+           
+            </form>
+            {/* <label>
+                <span>Review</span> */}
+            {/* <textarea
+                  id="comment"
+                  cols="35"
+                  rows="4"
+                  className="reviewForm"
+                  name="comment"
+                  value={review.comment}
+                  onChange={handleChangeReview}
+                ></textarea> */}
+            {/* </label>
+              <label>
+                <span>Rating</span>
+                <select
+                  name="rating"
+                  value={review.rating}
+                  onChange={handleChangeRating}
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </label> */}
+            {/* <button>ADD REVIEW</button> */}
+            {/* </form> */}
+          </Paper>
+        </Box>
+        {/* <form onSubmit={handleSubmit}>
           <label>
             <span>Review</span>
             <textarea
@@ -187,8 +246,7 @@ const Movie = (props) => {
               <option value="5">5</option>
             </select>
           </label>
-          <button>ADD REVIEW</button>
-        </form>
+          <button>ADD REVIEW</button> */}
 
         {/* <ul>
           <li> {reviews.reviews}</li>
