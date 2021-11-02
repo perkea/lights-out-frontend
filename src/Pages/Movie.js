@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { auth } from '../services/firebase';
-// import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField';
 
 const Movie = (props) => {
   const imageWidth = "w300";
