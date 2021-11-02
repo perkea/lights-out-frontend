@@ -98,7 +98,7 @@ background-image: url("../public/Images/Coco_dominates_Chinese_box_office_.jpeg"
 }
 
 /* Gallery */
-.container {
+/* .container {
   background: #141414;
   color: #ffffff;
 
@@ -124,7 +124,7 @@ background-image: url("../public/Images/Coco_dominates_Chinese_box_office_.jpeg"
 .container:hover .overlay {
   opacity: 1;
 }
-
+ */
 
 
 .container {
@@ -138,14 +138,14 @@ background-image: url("../public/Images/Coco_dominates_Chinese_box_office_.jpeg"
   flex: 0 0 auto
 }
 
-.image_container:hover {
+/* .image_container:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
 .image_container:hover .overlay {
   opacity: 1;
-}
+} */
 
 .movie_image {
   height: 300px;
