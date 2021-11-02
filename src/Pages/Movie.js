@@ -6,9 +6,12 @@ import Paper from "@mui/material/Paper";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Rating from "@mui/material/Rating";
 import Typography  from "@mui/material/Typography";
+import { palette } from '@mui/system'
+
 
 
 const Movie = (props) => {
+  
   const imageWidth = "w300";
   const imageUrl = `https://image.tmdb.org/t/p/${imageWidth}/`;
   console.log("all the movies", props.movies);
@@ -159,14 +162,17 @@ const Movie = (props) => {
                     <div>{review.comment}</div>
                   </article> */}
         <Box display="flex" justifyContent="center" alignContent="center">
-          <Paper>
+          <Paper variant="outlined" square >
+
+    
+    
             <form onSubmit={handleSubmit}>
               <TextareaAutosize
                 type="text"
                 name="comment"
                 value={review.comment}
                 className="reviewForm"
-                maxRows={4}
+                maxRows={6}
                 aria-label="maximum height"
                 placeholder="Write a Review"
                 style={{ width: 200 }}
@@ -186,7 +192,7 @@ const Movie = (props) => {
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option> */}
-              <Button variant="contained">Add Review</Button>
+              <Button variant="contained" type = "submit">Add Review</Button>
            
             </form>
             {/* <label>

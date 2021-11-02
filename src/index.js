@@ -1,17 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import "./styles.scss";
+// import "./index.css";
+// import "./styles.scss";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { unstable_createMuiStrictModeTheme } from '@mui/material/styles';
+import { ThemeProvider } from "@mui/material";
 
+const theme = unstable_createMuiStrictModeTheme();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-        <App />
-    </Router>
+    <ThemeProvider theme={theme}>
+        <Router>
+            <App />
+        </Router>
+      </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

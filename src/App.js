@@ -11,7 +11,24 @@ import Nav from "./components/Nav";
 import Search from "./Pages/SearchBox";
 import { auth } from "./services/firebase";
 import Signup from "./Pages/Signup";
+import { createTheme } from '@mui/material/styles';
 
+
+const theme = createTheme({
+  status: {
+    danger: 'ba181b',
+  },
+  palette: {
+    primary: {
+      main: '#0b090a',
+      darker: '#053e85',
+    },
+    neutral: {
+      main: '#64748B',
+      contrastText: "#ba181b",
+    },
+  },
+});
 
 function App() {
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
