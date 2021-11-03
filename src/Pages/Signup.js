@@ -34,6 +34,7 @@ const Signup = (props) => {
 //           type="submit"
 //           value="Sign Up"
 //         />
+
 //       </form>
 //     </div>
 //   );

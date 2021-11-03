@@ -9,3 +9,11 @@ body{
   color: white;
   margin-left: 15px;
 }
+
+.movie_container{
+  border: 12px solid #B22222;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
+}

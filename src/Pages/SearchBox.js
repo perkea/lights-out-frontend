@@ -1,9 +1,44 @@
-import React from "react";
+import Box from "@mui/material/Box"
+import { Typography } from "@mui/material";
+import { Input } from '@mui/material';
+import Button  from "@mui/material/Button";
+
+
 
 
 const SearchBox = (props) => {
 	return (
 <div class="container">
+<Box display="flex"  justifyContent="flex-start" m={1} p={1}>
+<img style={{width: "600px", height: "500px"}}src = "/Images/search_image.jpg" alt = "search"/>
+
+    	<Box p={1}>
+     
+        <Box>
+        <i className="fas fa-search h4 text-body">Cool</i>
+            <Input type = "search" placeholder = "Type a movie name" value = {props.value} onChange = {(event)=>{
+props.setSearchValue(event.target.value)
+                                        }}/> <Button variant="contained" type="submit">
+                                        Search
+                                      </Button>
+        {/* <Typography variant="h3" gutterBottom className={classes.title}>{ movie.title}</Typography>
+        <Typography variant="subtitle1" gutterBottom className={classes.date}>{ movie.release_date}</Typography>
+        <Typography variant="subtitle1" gutterBottom className={classes.plot}>{ movie.overview }</Typography> */}
+        </Box>
+        </Box>
+
+
+        </Box>
+        </div>
+    )}
+
+{/* 
+
+
+
+
+
+
     <br/>
 	<div class="row justify-content-center">
                         <div className="col-12 col-md-10 col-lg-8">
@@ -32,13 +67,13 @@ props.setSearchValue(event.target.value)
                             </form>
                         </div>
                       
-                    </div>
-</div>
+// //                     </div>
+// // </div> */}
 
 
 
 
-  )}
+//   )}
 
 
 
