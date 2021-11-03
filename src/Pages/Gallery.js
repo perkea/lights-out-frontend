@@ -34,7 +34,7 @@ const Gallery = (props) => {
 
   const loaded = () => {
     return (
-      <div classNa>
+      <div>
         <Box
           sx={{
             display: "flex",
