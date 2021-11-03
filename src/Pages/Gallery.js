@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 
+
 function Item(props) {
   const { sx, ...other } = props;
   return (
@@ -34,14 +35,14 @@ const Gallery = (props) => {
 
   const loaded = () => {
     return (
-      <div>
+      <div >
         <Box
           sx={{
             display: "flex",
             flexWrap: "wrap",
             p: 1,
             m: 1,
-            bgcolor: "background.paper",
+            bgcolor: "palatte.background.paper",
             maxWidth: 2800,
           }}
         >
