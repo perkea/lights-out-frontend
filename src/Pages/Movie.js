@@ -11,6 +11,11 @@ import MovieCard from "./MovieCard";
 import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@mui/styles";
 import { shadows } from '@material-ui/system';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+
 
 
 
@@ -118,6 +123,18 @@ const useStyles = makeStyles((theme) => ({
   rating: {
     fontWeight: "bold",
     marginTop: 2,
+  },
+  list: {
+    background: '#121212',
+    color: 'white',
+    margin: 30,
+  },
+  container:{
+    border: "12px solid #930521",
+    borderRadius: "10px",
+    marginTop: "15px",
+    marginBottom: "15px",
+      
   }
 }));
 
@@ -213,7 +230,7 @@ const Movie = (props) => {
     return (
       <div>
      
-        <div className="movie_component">
+        <div className={classes.container}>
         <CircularProgress style={{ display: movie?"none":"block", margin: "20px auto" }}/>
         <Box display="flex" className={classes.box} justifyContent="flex-start" m={1} p={1}>
     	<Box p={1}>
@@ -237,16 +254,16 @@ const Movie = (props) => {
           
           
           
-          
+{/*           
           <img
             style={{ borderColor: "red" }}
             src={imageUrl + "/" + movie.poster_path}
             alt=""
           />
           <p>{movie.overview}</p>
-          <h4>{movie.release_date}</h4>
-          <h2>Reviews</h2>
-          <hr />
+          <h4>{movie.release_date}</h4> */}
+          {/* <h2>Reviews</h2> */}
+          {/* <hr />
 
           <Grid container spacing={12}>
             {reviews.length <= 0
@@ -256,7 +273,7 @@ const Movie = (props) => {
                     <MovieCard comment={r.comment} rating={r.rating} />
                   </Grid>
                 ))}
-          </Grid>
+          </Grid> */}
 
           <h2>Would you like to leave a Rating</h2>
           <hr />
@@ -315,6 +332,17 @@ const Movie = (props) => {
               </form>
             {/* </Paper> */}
           </Box>
+          <Typography className={classes.heading}>Reviews</Typography>
+    <CircularProgress style={{ display: reviews?"none":"block", margin: "20px auto" }} />
+    <List component="nav" className={classes.list}>
+    { reviews.map((review, index)=> (
+      <ListItem button>
+      
+        <Typography className={classes.text}>{ review.comment }</Typography>
+        <Typography className={classes.text}><Rating value = {review.rating}/></Typography>
+      </ListItem>
+    )) }
+    </List>
         </div>
       </div>
     );
