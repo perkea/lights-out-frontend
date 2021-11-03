@@ -9,14 +9,18 @@ import { IconButton } from "@mui/material";
 import { Button } from "@mui/material";
 import { MenuIcon } from "@mui/material";
 import { Link } from "@mui/material";
-// import { makeStyles } from "@mui/material";
+import {makeStyles } from "@mui/styles";
+import SearchIcon from '@material-ui/icons/Search';
 
-
-// const useStyles = makeStyles({
-//   logo: {
-//     maxWidth: 160,
-//   },
-// });
+const useStyles = makeStyles({
+  search: {
+    position: 'relative',
+    borderRadius: 20,
+    marginLeft: 0,
+    width: '100%',
+   
+  }
+ });
 
 
 const Nav = (props) => {
