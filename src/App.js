@@ -14,6 +14,7 @@ import { createTheme } from '@mui/material/styles';
 import useDarkMode from "./components/useDarkMode";
 import { red } from '@mui/material/colors';
 
+
 const color = red[700];
 const theme = createTheme({
   palette: {
