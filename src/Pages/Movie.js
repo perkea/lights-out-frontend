@@ -10,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import MovieCard from "./MovieCard";
 import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@mui/styles";
-
+import { shadows } from '@material-ui/system';
 
 
 
@@ -59,6 +59,65 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       maxWidth: 60
     }
+  },
+  heading: {
+  	fontSize: 30,
+  	color: "white",
+  	margin: 15
+  },
+  rating: {
+  	margin: "0px 0px 20px 20px"
+    // rateValue: {
+    //   fontWeight: 'bold',
+    //   marginTop: 2,
+    // }
+  },
+  reviewBox: {
+  	maxWidth: 500,
+  	fontSize: 20,
+  	fontWeight: "bolder",
+  	width: "250%",
+  	background: "rgb(30,30,30)",
+  	border: "none",
+  	padding: 15,
+  	color: "white",
+  	borderRadius: 30,
+    letterSpacing: 3,
+    wordSpacing: 7,
+  	[theme.breakpoints.down('sm')]: {
+  		width: "80%"
+  	},
+  	'&:focus': {
+      outline: "none"
+    }
+  },
+  postButton: {
+  	// background: "transparent",
+  	border: "2px solid white",
+  	// color: "white",
+  	fontWeight: "bolder",
+  	borderRadius: 17
+  },
+  reviewBox: {
+    maxWidth: 500,
+    fontSize: 20,
+    fontWeight: "bolder",
+    width: "250%",
+    background: "rgb(30,30,30)",
+    border: "none",
+    padding: 15,
+    color: "white",
+    borderRadius: 30,
+    letterSpacing: 3,
+    wordSpacing: 7,
+
+    "&:focus": {
+      outline: "none",
+    },
+  },
+  rating: {
+    fontWeight: "bold",
+    marginTop: 2,
   }
 }));
 
@@ -166,7 +225,13 @@ const Movie = (props) => {
         <Typography variant="subtitle1" gutterBottom className={classes.plot}>{ movie.overview }</Typography>
         </Box>
         </Box>
-          
+          {/* <Box>
+          <Typography className={classes.heading}>Post a Review</Typography>
+          <Rating name={"rating"} value={props.rating} size={"small"} />
+            <Typography variant={"body2"} className = {classes.rating}>
+            {props.rating}
+            </Typography>
+          </Box> */}
           
           
           
@@ -197,9 +262,9 @@ const Movie = (props) => {
           <hr />
 
           <Box display="flex" justifyContent="center" alignContent="center">
-            <Paper variant="outlined" square>
+            {/* <Paper variant="outlined" square> */}
               <form onSubmit={handleSubmit}>
-                <TextareaAutosize
+                {/* <TextareaAutosize
                   type="text"
                   name="comment"
                   value={review.comment}
@@ -210,21 +275,45 @@ const Movie = (props) => {
                   style={{ width: 200 }}
                   label="comment"
                   onChange={handleChangeReview}
+                /> */}
+                <Typography className={classes.heading}>Post Review</Typography>
+                <TextareaAutosize
+                  name="comment"
+                  label="comment"
+                  value={review.comment}
+                  maxLength={300}
+                  className={classes.reviewBox}
+                  boxShadow={3}
+                  rowsMin={6}
+                  placeholder={"Post something"}
+                  onChange={handleChangeReview}
                 />
                 <Typography component="legend">
                   Would you like to leave a Rating
                 </Typography>
-                <Rating
+                {/* <Rating
                   name="rating"
                   value={review.rating}
                   label="rating"
                   onChange={handleChangeRating}
-                />
-                <Button variant="contained" type="submit">
+                /> */}
+                <Rating 
+                  name="rating"
+                  label="rating"
+                  value={review.rating} 
+                  className={classes.rating} 
+                  onChange={handleChangeRating}
+                  />
+
+                {/* <Button variant="contained" type="submit">
                   Add Review
+                </Button> */}
+                <Button variant="contained" type="submit" className={classes.postButton}>
+                  Post Review
                 </Button>
+
               </form>
-            </Paper>
+            {/* </Paper> */}
           </Box>
         </div>
       </div>
