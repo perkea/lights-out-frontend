@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Gallery from "./Pages/Gallery";
 import Serials from "./Pages/Serials";
 import Login from "./Pages/Login";
@@ -166,6 +165,7 @@ palatte:{
         </Route>
 
         <Route path="/search">
+        <Nav />
           <Search searchValue={searchValue} setSearchValue={setSearchValue} />
         </Route>
 
