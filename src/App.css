@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
 } */
-
+body{
+  background-color: black;
+}
 .toolbar a {
   color: white;
   margin-left: 15px;
