@@ -5,10 +5,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { unstable_createMuiStrictModeTheme } from '@mui/material/styles';
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../src/components/theme"
 
-const theme = unstable_createMuiStrictModeTheme();
 
 ReactDOM.render(
   <React.StrictMode>
