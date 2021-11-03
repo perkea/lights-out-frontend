@@ -7,20 +7,17 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { palette } from "@mui/system";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import useDarkMode from "../components/useDarkMode";
-import { Switch as Swt } from "@mui/material";
 
 const Movie = (props) => {
-  const [mode, toggleMode] = useDarkMode();
-  const theme = createTheme(
-    {
-      palatte: {
-        mode: mode,
-      },
-    },
-    [mode]
-  );
+  // const [mode, toggleMode] = useDarkMode();
+  // const theme = createTheme(
+  //   {
+  //     palatte: {
+  //       mode: mode,
+  //     },
+  //   },
+  //   [mode]
+  // );
 
   const imageWidth = "w300";
   const imageUrl = `https://image.tmdb.org/t/p/${imageWidth}/`;
@@ -102,8 +99,8 @@ const Movie = (props) => {
   const loaded = (props) => {
     console.log("render loaded ", reviews);
     return (
-      <ThemeProvider theme={mode}>
-        <Swt>
+      // <ThemeProvider theme={mode}>
+      //   <Swt>
           <div className="movie_component">
             <img src={imageUrl + "/" + movie.poster_path} alt="" />
             <p>{movie.overview}</p>
@@ -158,8 +155,8 @@ const Movie = (props) => {
               </Paper>
             </Box>
           </div>
-        </Swt>
-      </ThemeProvider>
+      //   </Swt>
+      // </ThemeProvider>
     );
   };
 
