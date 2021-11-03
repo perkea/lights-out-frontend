@@ -17,6 +17,8 @@ import { Link } from "@mui/material";
 //     maxWidth: 160,
 //   },
 // });
+
+
 const Nav = (props) => {
   const [user, setUser] = useState(null);
 
@@ -40,9 +42,30 @@ const Nav = (props) => {
         <Link href="/favourites">
           <div>Favourites</div>
         </Link>
-        <Link to="/signup">
-          <div>Signup</div>
-        </Link>
+        {props.user ? (
+          <div>
+            {/* <div style={{color:"white", display:"inline", marginLeft: "200px"}} className="userName" id="displayName">
+              Welcome, {props.user.displayName}
+            </div> */}
+            <div style={{color:"white", display:"inline"}}>
+              Welcome&nbsp; 
+              <img
+                src={props.user.photoURL}
+                alt={props.user.displayName}
+                className="userName"
+                id="userPhoto"
+              />
+            </div>
+            <Button onClick={logOut} style={{color:"white", display:"inline"}} className="logButtons">
+              Logout
+            </Button>
+
+          </div>
+        ) : (
+          <Link href="/login">
+            <div>Login</div>
+          </Link>
+        )}
       </Toolbar>
     </AppBar>
 
