@@ -120,26 +120,45 @@ palatte:{
  
     <div>
       <Switch>
-        <Route exact path="/">
+
+        <Route
+          exact path="/"
+          render={() => (user ? <div>
+            <Nav user={user} />
+            <div className="container movie-app">
+              <div className="row">
+                <Gallery movies={movies}  user = {user}/>
+              </div>
+            </div>
+          </div> : <Login />)}
+        />
+
+        {/* <Route exact path="/">
           <Nav user={user} />
           <div className="container movie-app">
             <div className="row">
               <Gallery movies={movies}  user = {user}/>
             </div>
           </div>
-        </Route>
+        </Route> */}
 
         <Route path="/serials">
           <Nav />
           <Serials serials={serials} />
         </Route>
         
-        
-        
+
         <Route
           path="/movies/:id"
-          render={(rp) => <Movie {...rp} movies={movies}/>}
+          render={(rp) => (user ? <div>
+            <Nav user={user} />
+            <Movie {...rp} movies={movies}/>
+          </div> : <Login />)}
         />
+        {/* <Route
+          path="/movies/:id"
+          render={(rp) => <Movie {...rp} movies={movies}/>}
+        /> */}
 
         <Route path="/favourites">
           <Nav />
@@ -150,9 +169,13 @@ palatte:{
           <Search searchValue={searchValue} setSearchValue={setSearchValue} />
         </Route>
 
-        <Route
+        {/* <Route
           path="/login"
           render={() => (user ? <Redirect to="/" /> : <Login />)}
+        /> */}
+        <Route
+          path="/login"
+          render={() => (<Login />)}
         />
         <Route
           path="/gallery"
