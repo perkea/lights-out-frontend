@@ -6,9 +6,64 @@ import Paper from "@mui/material/Paper";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
-import { palette } from "@mui/system";
+import Grid from "@mui/material/Grid";
+import MovieCard from "./MovieCard";
+import { CircularProgress } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
+
+
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+  title: {
+  	color: "white",
+  	paddingTop: 10
+  },
+  date: {
+  	color: "lightgrey"
+  },
+  plot: {
+  	color: "white",
+  	paddingTop: 10
+  },
+  button: {
+  	margin: 10,
+  	fontWeight: "bolder"
+  },
+  poster: {
+    maxWidth: 250,
+    margin: 20,
+    borderBlockColor: "red",
+    display: "inline-block",
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: "80%"
+    }
+  },
+   box: {
+    [theme.breakpoints.down('xs')]: {
+      flexWrap: "wrap"
+    }
+  },
+  link: {
+    color: "white",
+    padding: 10
+  },
+  list: {
+    display: 'inline-block'
+  },
+  people: {
+    maxWidth: 150,
+    margin: 15,
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: 60
+    }
+  }
+}));
 
 const Movie = (props) => {
+  const classes = useStyles();
   // const [mode, toggleMode] = useDarkMode();
   // const theme = createTheme(
   //   {
@@ -50,7 +105,6 @@ const Movie = (props) => {
   }, []);
   console.log("the movie I chose", movie);
 
- 
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -81,7 +135,6 @@ const Movie = (props) => {
   function handleChangeRating(event) {
     setReview({ ...review, rating: event.target.value });
   }
- 
 
   async function getReviews() {
     const response = await fetch(
@@ -99,72 +152,118 @@ const Movie = (props) => {
   const loaded = (props) => {
     console.log("render loaded ", reviews);
     return (
-      // <ThemeProvider theme={mode}>
-      //   <Swt>
-          <div className="movie_component">
-            <img src={imageUrl + "/" + movie.poster_path} alt="" />
-            <p>{movie.overview}</p>
-            <h4>{movie.release_date}</h4>
-            {/* {reviews} */}
-            <h2>Reviews</h2>
-            <hr />
-            <ul>
-              {reviews.length <= 0
-                ? ""
-                : reviews.map((r, index) => (
-                    <li>
-                      <article key={index}>
-                        <div>{r.comment}</div>
-                        <div>{r.rating}</div>
-                      </article>
-                    </li>
-                  ))}
-            </ul>
+      <div>
+     
+        <div className="movie_component">
+        <CircularProgress style={{ display: movie?"none":"block", margin: "20px auto" }}/>
+        <Box display="flex" className={classes.box} justifyContent="flex-start" m={1} p={1}>
+    	<Box p={1}>
+          <img className={classes.poster} src={ imageUrl + "/" + movie.poster_path} />
+        </Box>
+        <Box>
+        <Typography variant="h3" gutterBottom className={classes.title}>{ movie.title}</Typography>
+        <Typography variant="subtitle1" gutterBottom className={classes.date}>{ movie.release_date}</Typography>
+        <Typography variant="subtitle1" gutterBottom className={classes.plot}>{ movie.overview }</Typography>
+        </Box>
+        </Box>
+          
+          
+          
+          
+          
+          
+          
+          <img
+            style={{ borderColor: "red" }}
+            src={imageUrl + "/" + movie.poster_path}
+            alt=""
+          />
+          <p>{movie.overview}</p>
+          <h4>{movie.release_date}</h4>
+          <h2>Reviews</h2>
+          <hr />
 
-            <h2>Would you like to leave a Rating</h2>
-            <hr />
+          <Grid container spacing={12}>
+            {reviews.length <= 0
+              ? ""
+              : reviews.map((r, index) => (
+                  <Grid item xs={4}>
+                    <MovieCard comment={r.comment} rating={r.rating} />
+                  </Grid>
+                ))}
+          </Grid>
 
-            <Box display="flex" justifyContent="center" alignContent="center">
-              <Paper variant="outlined" square>
-                <form onSubmit={handleSubmit}>
-                  <TextareaAutosize
-                    type="text"
-                    name="comment"
-                    value={review.comment}
-                    className="reviewForm"
-                    maxRows={6}
-                    aria-label="maximum height"
-                    placeholder="Write a Review"
-                    style={{ width: 200 }}
-                    label="comment"
-                    onChange={handleChangeReview}
-                  />
-                  <Typography component="legend">
-                    Would you like to leave a Rating
-                  </Typography>
-                  <Rating
-                    name="rating"
-                    value={review.rating}
-                    label="rating"
-                    onChange={handleChangeRating}
-                  />
-                  <Button variant="contained" type="submit">
-                    Add Review
-                  </Button>
-                </form>
-              </Paper>
-            </Box>
-          </div>
-      //   </Swt>
-      // </ThemeProvider>
+          <h2>Would you like to leave a Rating</h2>
+          <hr />
+
+          <Box display="flex" justifyContent="center" alignContent="center">
+            <Paper variant="outlined" square>
+              <form onSubmit={handleSubmit}>
+                <TextareaAutosize
+                  type="text"
+                  name="comment"
+                  value={review.comment}
+                  className="reviewForm"
+                  maxRows={6}
+                  aria-label="maximum height"
+                  placeholder="Write a Review"
+                  style={{ width: 200 }}
+                  label="comment"
+                  onChange={handleChangeReview}
+                />
+                <Typography component="legend">
+                  Would you like to leave a Rating
+                </Typography>
+                <Rating
+                  name="rating"
+                  value={review.rating}
+                  label="rating"
+                  onChange={handleChangeRating}
+                />
+                <Button variant="contained" type="submit">
+                  Add Review
+                </Button>
+              </form>
+            </Paper>
+          </Box>
+        </div>
+      </div>
     );
   };
 
   const loading = () => {
     return <h1>Loading......</h1>;
   };
-  
+
   return movie ? loaded() : loading();
 };
 
 export default Movie;
+
+{
+  /* <Box
+  sx={{
+    width: 300,
+    height: 300,
+    backgroundColor: 'primary.dark',
+    '&:hover': {
+      backgroundColor: 'primary.main',
+      opacity: [0.9, 0.8, 0.7],
+    },
+  }}
+/>
+
+<Box display="flex" className={classes.box} justifyContent="flex-start" m={1} p={1}>
+    	<Box p={1}>
+          <img className={classes.poster} src={ movie?("https://image.tmdb.org/t/p/w500"+movie.poster):"https://via.placeholder.com/400x600" } />
+        </Box>
+        <Box p={1}>
+          <Typography variant="h3" gutterBottom className={classes.title}>{ movie?movie.title:"" }</Typography>
+          <Typography variant="subtitle1" gutterBottom className={classes.date}>{ movie?toDate(movie.release_date):"" }</Typography>
+          <Typography variant="subtitle1" gutterBottom className={classes.plot}>{ movie?movie.plot:"" }</Typography>
+          <Typography variant="h5" gutterBottom className={classes.title}>Cast:</Typography>
+          <Typography variant="subtitle1" gutterBottom className={classes.title}>{ movie?movie.cast.map(x=><Link href={"/people/"+x.people_id} className={classes.link}>{x.name}</Link>):"" }</Typography>
+          <Button disabled={!(movie && movie.imdb_id)} variant="contained" href={"https://imdb.com/title/"+movie?movie.imdb_id:""} className={classes.button}>IMDB</Button>
+        </Box>
+  	</Box> */
+}
