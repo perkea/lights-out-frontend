@@ -3,6 +3,15 @@
 Lights Out is a website for movie night with the family. You can browse from the list of most popular movies. It also allows you to post a review about a movie. I hope you enjoy it. 
 
 ## Table of Contents
+* [API Reference](#api-reference)
+* [How it all works ](#how-it-all-works)
+* [Technologies](#technologies)
+* [API Reference](#api-reference)
+
+
+
+
+
 
 
 ## API Reference
@@ -22,3 +31,8 @@ On the movie page, you can post reviews, and a 5-star rating. You can only post 
 
 All your reviews will appear on your user page.
 
+## Technologies used
+* Mongo 
+* React
+* Express
+* Material UI
