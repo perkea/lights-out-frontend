@@ -30,8 +30,6 @@ const Gallery = (props) => {
   const imageWidth = "w300";
   const imageUrl = `https://image.tmdb.org/t/p/${imageWidth}/`;
 
-  //useEffect to run getMovie when component mounts
-
   const loaded = () => {
     return (
       <div >
