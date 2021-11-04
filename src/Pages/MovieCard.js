@@ -1,17 +1,17 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+// import Card from "@mui/material/Card";
+// import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-import Box from "@mui/material/Box";
+// import { CardActionArea } from "@mui/material";
+// import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import { makeStyles } from "@mui/styles";
-import cx from "clsx";
+// import cx from "clsx";
 import { useWideCardMediaStyles } from "@mui-treasury/styles/cardMedia/wide";
 import { useFadedShadowStyles } from "@mui-treasury/styles/shadow/faded";
 import { usePushingGutterStyles } from "@mui-treasury/styles/gutter/pushing";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -70,9 +70,9 @@ const useStyles = makeStyles(() => ({
 
 export default function MovieCard(props) {
   const styles = useStyles();
-  const mediaStyles = useWideCardMediaStyles();
-  const shadowStyles = useFadedShadowStyles();
-  const gutterStyles = usePushingGutterStyles({ firstExcluded: true });
+  // const mediaStyles = useWideCardMediaStyles();
+  // const shadowStyles = useFadedShadowStyles();
+  // const gutterStyles = usePushingGutterStyles({ firstExcluded: true });
   return (
     <div>
       <Typography className={styles.heading}>Post Review</Typography>

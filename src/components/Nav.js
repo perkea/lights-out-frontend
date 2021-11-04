@@ -1,30 +1,31 @@
-import { Link as ReactLink, Redirect } from "react-router-dom";
+// import { Link as ReactLink, Redirect } from "react-router-dom";
 import { logOut } from "../services/firebase";
 import { auth } from "../services/firebase";
 import { useState, useEffect } from "react";
 import { AppBar } from "@mui/material";
 import { Toolbar } from "@mui/material";
-import { Typography } from "@mui/material";
-import { IconButton } from "@mui/material";
+// import { Typography } from "@mui/material";
+// import { IconButton } from "@mui/material";
 import { Button } from "@mui/material";
-import { MenuIcon } from "@mui/material";
+// import { MenuIcon } from "@mui/material";
 import { Link } from "@mui/material";
 import {makeStyles } from "@mui/styles";
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 
-const useStyles = makeStyles({
-  search: {
-    position: 'relative',
-    borderRadius: 20,
-    marginLeft: 0,
-    width: '100%',
+// const useStyles = makeStyles({
+//   search: {
+//     position: 'relative',
+//     borderRadius: 20,
+//     marginLeft: 0,
+//     width: '100%',
    
-  }
- });
+//   }
+//  });
 
 
 const Nav = (props) => {
   const [user, setUser] = useState(null);
+  console.log(user)
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => setUser(user));

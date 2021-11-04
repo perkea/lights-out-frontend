@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 import { auth } from "../services/firebase";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import MovieCard from "./MovieCard";
+// import Grid from "@mui/material/Grid";
+// import MovieCard from "./MovieCard";
 import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@mui/styles";
-import { shadows } from '@material-ui/system';
+// import { shadows } from '@material-ui/system';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import Divider from '@material-ui/core/Divider';
 
 
 
@@ -55,9 +55,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     padding: 10
   },
-  list: {
-    display: 'inline-block'
-  },
+  
   people: {
     maxWidth: 150,
     margin: 15,
@@ -77,25 +75,7 @@ const useStyles = makeStyles((theme) => ({
     //   marginTop: 2,
     // }
   },
-  reviewBox: {
-  	maxWidth: 500,
-  	fontSize: 20,
-  	fontWeight: "bolder",
-  	width: "250%",
-  	background: "rgb(30,30,30)",
-  	border: "none",
-  	padding: 15,
-  	color: "white",
-  	borderRadius: 30,
-    letterSpacing: 3,
-    wordSpacing: 7,
-  	[theme.breakpoints.down('sm')]: {
-  		width: "80%"
-  	},
-  	'&:focus': {
-      outline: "none"
-    }
-  },
+
   postButton: {
   	// background: "transparent",
   	border: "2px solid white",
@@ -120,10 +100,7 @@ const useStyles = makeStyles((theme) => ({
       outline: "none",
     },
   },
-  rating: {
-    fontWeight: "bold",
-    marginTop: 2,
-  },
+
   list: {
     background: '#121212',
     color: 'white',

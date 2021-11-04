@@ -2,7 +2,6 @@ import { React, useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Gallery from "./Pages/Gallery";
-import Serials from "./Pages/Serials";
 import Login from "./Pages/Login";
 import Movie from "./Pages/Movie";
 import Favourites from "./Pages/Favourites";
@@ -15,7 +14,7 @@ import useDarkMode from "./components/useDarkMode";
 import { red } from '@mui/material/colors';
 
 
-const color = red[700];
+// const color = red[700];
 const theme = createTheme({
   palette: {
     primary: {
@@ -49,13 +48,13 @@ const theme = createTheme({
 // });
 
 function App() {
-  const [mode, toggleMode] = useDarkMode();
-  const theme = createTheme({
-palatte:{
-  mode:mode,
-}
+//   const [mode, toggleMode] = useDarkMode();
+//   const theme = createTheme({
+// palatte:{
+//   mode:mode,
+// }
 
-  }, [mode])
+//   }, [mode])
   //const apiKey = "553ff4c7632836ac15fb42f83753edfd";
   //const url = `https://api.themoviedb.org/3/movie/popular?api_key=5${apiKey}&language=en-US&page=20`;
   const url =

@@ -18,7 +18,6 @@ const Serials = (props) => {
               {/* <h1 className = "movie_title">{movie.title}</h1> */}
 
               <img
-                src="serial_image"
                 src={imageUrl + "/" + serial.poster_path}
                 alt="serial"
               />
