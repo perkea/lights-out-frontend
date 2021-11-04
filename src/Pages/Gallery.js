@@ -54,7 +54,6 @@ const Gallery = (props) => {
                 <a href={"/movies/" + movie.id}>
                   {" "}
                   <img
-                    src="movie_image"
                     src={imageUrl + "/" + movie.poster_path}
                     alt="movie"
                   />{" "}
