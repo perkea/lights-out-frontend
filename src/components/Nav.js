@@ -21,7 +21,7 @@ const Nav = (props) => {
     <AppBar position="static" justify>
       <Toolbar className="toolbar">
         <Link>
-          <a href = "/" > <img style={{width: "128px", height: "105px",}} src="Images/movie_night.png" alt="logo"/></a>
+          <a href = "/" > <img style={{width: "128px", height: "105px",}} src="/Images/movie_night.png" alt="logo"/></a>
         </Link>
         <Link href="/search">
           <div>Search</div>
