@@ -1,9 +1,9 @@
-import React from "react";
+
 import { signIn } from "../services/firebase";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-// import {Item }from "@mui/material"
+
 const Login = (props) => {
   return (
     <div class="container">
@@ -24,9 +24,6 @@ const Login = (props) => {
           <Grid
             color="green"
             wrap="nowrap"
-            // marginLeft="-355px"
-            // marginBottom="68px"
-            // fontSize = "19px"
             marginLeft="72px"
             marginRight="100px"
             marginBottom="90px"
