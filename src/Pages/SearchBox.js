@@ -2,21 +2,52 @@ import Box from "@mui/material/Box"
 import { Typography } from "@mui/material";
 import { Input } from '@mui/material';
 import Button  from "@mui/material/Button";
+//  import ChatBubbleIcon from '@mui/material/icons/ChatBubbleIcon'
+//  import { ChatBubbleIcon} from "@mui/icons-material"
+ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
+ import { makeStyles } from "@mui/styles";
+import { TextField } from "@mui/material";
+import Grid from "@mui/material/Grid"
 
+ const useStyles = makeStyles((theme) => ({
+largeIcon:{
+    height:"300px",
+    width:"500px"
 
-
+}
+    
+  }))
 
 const SearchBox = (props) => {
+    const styles = useStyles();
 	return (
 <div class="container">
 <Box display="flex"  justifyContent="flex-start" m={1} p={1}>
-<img style={{width: "600px", height: "500px"}}src = "/Images/search_image.jpg" alt = "search"/>
+<img style={{width: "700px", height: "500px", marginLeft: "50px"}}src = "/Images/search_image.jpg" alt = "search"/>
+
+<Grid container direction="row" alignItems="center" wrap = "nowrap">
+  <Grid>
+  <ChatBubbleOutlineIcon color = "primary" placeholder = "cool" fontSize="inherit"className={styles.largeIcon} name= "COOL" value = "cool" label = "cool"/>
+  </Grid>
+  <Grid color = "blue" wrap = "nowrap"  marginLeft = "-341px" marginBottom = "68px">
+  Is it me you are looking for??
+  </Grid>
+</Grid>
+
+
+
+
+<div>
+Is it me you are looking for?
+</div>
+
 
     	<Box p={1}>
      
         <Box>
-        <i className="fas fa-search h4 text-body">Cool</i>
-            <Input type = "search" placeholder = "Type a movie name" value = {props.value} onChange = {(event)=>{
+       <input type = "search" placeholder = "Type a movie name" style = {{marginTop:"100px"}}/>
+            <Input 
+            type = "search" placeholder = "Type a movie name" onChange = {(event)=>{
 props.setSearchValue(event.target.value)
                                         }}/> <Button variant="contained" type="submit">
                                         Search
@@ -26,7 +57,7 @@ props.setSearchValue(event.target.value)
         <Typography variant="subtitle1" gutterBottom className={classes.plot}>{ movie.overview }</Typography> */}
         </Box>
         </Box>
-
+        <Typography variant="h3">COOL</Typography>
 
         </Box>
         </div>
