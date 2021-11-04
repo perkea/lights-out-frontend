@@ -9,28 +9,28 @@ import Nav from "./components/Nav";
 import Search from "./Pages/SearchBox";
 import { auth } from "./services/firebase";
 import Signup from "./Pages/Signup";
-import { createTheme } from '@mui/material/styles';
-import useDarkMode from "./components/useDarkMode";
-import { red } from '@mui/material/colors';
+// import { createTheme } from '@mui/material/styles';
+// import useDarkMode from "./components/useDarkMode";
+// import { red } from '@mui/material/colors';
 
 
 // const color = red[700];
-const theme = createTheme({
-  palette: {
-    primary: {
-      light: '#e53935',
-      main: '#1a237e',
-      dark: '#000',
-      contrastText: "#311b92",
-    },
-    secondary: {
-      light: '#ff1744',
-      main: '#ff1744',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  },
-});
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       light: '#e53935',
+//       main: '#1a237e',
+//       dark: '#000',
+//       contrastText: "#311b92",
+//     },
+//     secondary: {
+//       light: '#ff1744',
+//       main: '#ff1744',
+//       dark: '#ba000d',
+//       contrastText: '#000',
+//     },
+//   },
+// });
 // const theme = createTheme({
 //   status: {
 //     danger: 'ba181b',
@@ -59,15 +59,14 @@ function App() {
   //const url = `https://api.themoviedb.org/3/movie/popular?api_key=5${apiKey}&language=en-US&page=20`;
   const url =
     "https://api.themoviedb.org/3/movie/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
-  const serial_url =
-    "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
+  // const serial_url = "https://api.themoviedb.org/3/tv/popular?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
   console.log("the url", url);
   console.log("length", url.length);
   const [user, setUser] = useState(null);
   const [movies, setMovies] = useState(null);
   const [requestedMovies, setRequestedMovies] = useState(false);
-  const [serials, setSerials] = useState(null);
-  const [requestedSerials, setRequestedSerials] = useState(false);
+  // const [serials, setSerials] = useState(null);
+  // const [requestedSerials, setRequestedSerials] = useState(false);
   
 
   //function to fetch movie data
@@ -83,16 +82,16 @@ function App() {
   }
 
   //function to fetch serial data
-  const getSerials = async () => {
-    const response = await fetch(serial_url);
-    const data = await response.json();
-    console.log("serial data got back", data);
-    setSerials(data.results);
-  };
-  if (requestedSerials === false) {
-    setRequestedSerials(true);
-    getSerials();
-  }
+  // const getSerials = async () => {
+  //   const response = await fetch(serial_url);
+  //   const data = await response.json();
+  //   console.log("serial data got back", data);
+  //   setSerials(data.results);
+  // };
+  // if (requestedSerials === false) {
+  //   setRequestedSerials(true);
+  //   getSerials();
+  // }
 
 
 
