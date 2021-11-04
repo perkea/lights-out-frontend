@@ -15,7 +15,9 @@ import ListItem from '@material-ui/core/ListItem';
 const useStyles = makeStyles((theme) => ({
   title: {
   	color: "white",
-  	paddingTop: 10
+  	paddingTop: 10,
+    color:"crimson",
+    fontFamily:"fantasy"
   },
   date: {
   	color: "lightgrey"
@@ -56,8 +58,9 @@ const useStyles = makeStyles((theme) => ({
   },
   heading: {
   	fontSize: 30,
-  	color: "white",
-  	margin: 15
+  	color: "crimson",
+  	margin: 15,
+    fontFamily:"monospace"
   },
   rating: {
   	margin: "0px 0px 20px 20px"

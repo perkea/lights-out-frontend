@@ -18,16 +18,16 @@ const Nav = (props) => {
   }, []);
 
   return (
-    <AppBar position="static" justify>
-      <Toolbar className="toolbar">
+    <AppBar position="static" justify >
+      <Toolbar className="toolbar" >
         <Link>
           <a href = "/" > <img style={{width: "128px", height: "105px"}} src="/Images/movie_night.png" alt="logo"/></a>
         </Link>
         <Link href="/search">
-          <div>Search</div>
+          <div style = {{fontFamily : "monospace" ,fontSize: "19px"}}>Search</div>
         </Link>
         <Link href="/favourites">
-          <div>Favourites</div>
+          <div style = {{fontFamily : "monospace" ,fontSize: "19px"}}>Favourites</div>
         </Link>
         {props.user ? (
           <div style = {{float:"right"}}>
@@ -49,7 +49,7 @@ const Nav = (props) => {
           </div>
         ) : (
           <Link href="/login">
-            <div>Login</div>
+            <div style = {{fontFamily : "monospace" ,fontSize: "19px"}}>Login</div>
           </Link>
         )}
       </Toolbar>
