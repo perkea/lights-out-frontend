@@ -59,6 +59,8 @@ const Nav = (props) => {
                 alt={props.user.displayName}
                 className="userName"
                 id="userPhoto"
+                style = {{borderRadius:"61px", width:"30px"}}
+  
               />
             </div>
             <Button onClick={logOut} style={{color:"white", display:"inline"}} className="logButtons">
