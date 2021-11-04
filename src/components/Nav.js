@@ -32,7 +32,7 @@ const Nav = (props) => {
   }, []);
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" justify>
       <Toolbar className="toolbar">
         <Link>
           <img style={{width: "128px", height: "105px",}} src="Images/movie_night.png" alt="logo"/>
@@ -47,11 +47,11 @@ const Nav = (props) => {
           <div>Favourites</div>
         </Link>
         {props.user ? (
-          <div>
+          <div style = {{float:"right"}}>
             {/* <div style={{color:"white", display:"inline", marginLeft: "200px"}} className="userName" id="displayName">
               Welcome, {props.user.displayName}
             </div> */}
-            <div style={{color:"white", display:"inline"}}>
+            <div style={{color:"white", display:"inline", marginLeft: "600px"}}>
               Welcome&nbsp; 
               <img
                 src={props.user.photoURL}
