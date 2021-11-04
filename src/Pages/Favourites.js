@@ -1,7 +1,12 @@
-import React from "react";
-
-const Favourites= (props) => {
-  return <h1>This is the Favourites Component</h1>;
+const Favourites = () => {
+  return (
+    <div>
+      <h1 style={{ fontSize: "39px", color: "plum", marginLeft: "231px" }}>
+        My Favourites
+      </h1>
+      <img style = {{marginLeft: "60px"}}src="/Images/favourite_movie.jpeg" alt="favourite_movie" />
+    </div>
+  );
 };
 
 export default Favourites;
