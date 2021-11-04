@@ -30,9 +30,7 @@ const SearchBox = (props) => {
               placeholder="cool"
               fontSize="inherit"
               className={styles.largeIcon}
-              name="COOL"
-              value="cool"
-              label="cool"
+        
             />
           </Grid>
           <Grid
