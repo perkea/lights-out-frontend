@@ -132,22 +132,6 @@ palatte:{
             </div>
           </div> : <Login />)}
         />
-
-        {/* <Route exact path="/">
-          <Nav user={user} />
-          <div className="container movie-app">
-            <div className="row">
-              <Gallery movies={movies}  user = {user}/>
-            </div>
-          </div>
-        </Route> */}
-
-        <Route path="/serials">
-          <Nav />
-          <Serials serials={serials} />
-        </Route>
-        
-
         <Route
           path="/movies/:id"
           render={(rp) => (user ? <div>
