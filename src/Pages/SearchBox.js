@@ -9,7 +9,7 @@ import Grid from "@mui/material/Grid";
 const useStyles = makeStyles((theme) => ({
   largeIcon: {
     height: "300px",
-    width: "500px",
+    width: "517px",
   },
 }));
 
@@ -37,10 +37,11 @@ const SearchBox = (props) => {
             />
           </Grid>
           <Grid
-            color="blue"
+            color="green"
             wrap="nowrap"
-            marginLeft="-341px"
+            marginLeft="-355px"
             marginBottom="68px"
+            fontSize = "19px"
           >
             Is it me you are looking for??
           </Grid>
@@ -64,7 +65,6 @@ const SearchBox = (props) => {
             </Button>
           </Box>
         </Box>
-        <Typography variant="h3">COOL</Typography>
       </Box>
     </div>
   );

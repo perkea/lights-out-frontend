@@ -142,6 +142,7 @@ const Movie = (props) => {
     rating: "5",
   });
 
+  console.log(user);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => setUser(user));
     return () => unsubscribe();
