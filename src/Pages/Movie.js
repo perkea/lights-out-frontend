@@ -140,6 +140,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Movie = (props) => {
   const classes = useStyles();
+  const API_URL = "https://lights-out-project3.herokuapp.com/reviews";
   // const [mode, toggleMode] = useDarkMode();
   // const theme = createTheme(
   //   {
@@ -189,7 +190,7 @@ const Movie = (props) => {
       movieId: movie_id,
     };
     console.log("my review", toSaveReview);
-    await fetch(`http://localhost:4000/reviews`, {
+    await fetch(`${API_URL}`, {
       method: "POST",
       headers: {
         "Content-type": "Application/json",
@@ -214,7 +215,7 @@ const Movie = (props) => {
 
   async function getReviews() {
     const response = await fetch(
-      `http://localhost:4000/reviews/moviesearch/${movie_id}`
+      `${API_URL}/moviesearch/${movie_id}`
     );
     const result = await response.json();
     console.log("all the reviews", result);
