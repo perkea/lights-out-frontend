@@ -1,16 +1,13 @@
 import React from "react";
-// import { StyledMain } from "../styles";
 import { signIn } from "../services/firebase";
-// import { Card, CardContent, CardActions, Button } from "@mui/material";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import { makeStyles } from "@mui/styles";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-
+// import {Item }from "@mui/material"
 const Login = (props) => {
   return (
     <div class="container">
+  
       <Box display="flex" justifyContent="flex-start" m={1} p={1}>
         <img
           style={{
@@ -24,7 +21,6 @@ const Login = (props) => {
         />
 
         <Grid container direction="row" alignItems="center" wrap="nowrap">
-          
           <Grid
             color="green"
             wrap="nowrap"
