@@ -2,22 +2,13 @@ import { useState, useEffect } from "react";
 import { auth } from "../services/firebase";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-// import Paper from "@mui/material/Paper";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
-// import Grid from "@mui/material/Grid";
-// import MovieCard from "./MovieCard";
 import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@mui/styles";
-// import { shadows } from '@material-ui/system';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import Divider from '@material-ui/core/Divider';
-
-
-
 
 
 
@@ -70,16 +61,10 @@ const useStyles = makeStyles((theme) => ({
   },
   rating: {
   	margin: "0px 0px 20px 20px"
-    // rateValue: {
-    //   fontWeight: 'bold',
-    //   marginTop: 2,
-    // }
   },
 
   postButton: {
-  	// background: "transparent",
   	border: "2px solid white",
-  	// color: "white",
   	fontWeight: "bolder",
   	borderRadius: 17
   },
@@ -117,17 +102,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Movie = (props) => {
   const classes = useStyles();
-  const API_URL = "https://lights-out-project3.herokuapp.com/reviews";
-  // const [mode, toggleMode] = useDarkMode();
-  // const theme = createTheme(
-  //   {
-  //     palatte: {
-  //       mode: mode,
-  //     },
-  //   },
-  //   [mode]
-  // );
-
+  const API_URL = "https://lights-out-project3.herokuapp.com/reviews"
   const imageWidth = "w300";
   const imageUrl = `https://image.tmdb.org/t/p/${imageWidth}/`;
   console.log("all the movies", props.movies);
@@ -221,57 +196,8 @@ const Movie = (props) => {
         <Typography variant="subtitle1" gutterBottom className={classes.plot}>{ movie.overview }</Typography>
         </Box>
         </Box>
-          {/* <Box>
-          <Typography className={classes.heading}>Post a Review</Typography>
-          <Rating name={"rating"} value={props.rating} size={"small"} />
-            <Typography variant={"body2"} className = {classes.rating}>
-            {props.rating}
-            </Typography>
-          </Box> */}
-          
-          
-          
-          
-          
-{/*           
-          <img
-            style={{ borderColor: "red" }}
-            src={imageUrl + "/" + movie.poster_path}
-            alt=""
-          />
-          <p>{movie.overview}</p>
-          <h4>{movie.release_date}</h4> */}
-          {/* <h2>Reviews</h2> */}
-          {/* <hr />
-
-          <Grid container spacing={12}>
-            {reviews.length <= 0
-              ? ""
-              : reviews.map((r, index) => (
-                  <Grid item xs={4}>
-                    <MovieCard comment={r.comment} rating={r.rating} />
-                  </Grid>
-                ))}
-          </Grid> */}
-
-          <h2>Would you like to leave a Rating</h2>
-          <hr />
-
           <Box display="flex" justifyContent="center" alignContent="center">
-            {/* <Paper variant="outlined" square> */}
               <form onSubmit={handleSubmit}>
-                {/* <TextareaAutosize
-                  type="text"
-                  name="comment"
-                  value={review.comment}
-                  className="reviewForm"
-                  maxRows={6}
-                  aria-label="maximum height"
-                  placeholder="Write a Review"
-                  style={{ width: 200 }}
-                  label="comment"
-                  onChange={handleChangeReview}
-                /> */}
                 <Typography className={classes.heading}>Post Review</Typography>
                 <TextareaAutosize
                   name="comment"
@@ -287,12 +213,6 @@ const Movie = (props) => {
                 <Typography component="legend">
                   Would you like to leave a Rating
                 </Typography>
-                {/* <Rating
-                  name="rating"
-                  value={review.rating}
-                  label="rating"
-                  onChange={handleChangeRating}
-                /> */}
                 <Rating 
                   name="rating"
                   label="rating"
@@ -300,16 +220,10 @@ const Movie = (props) => {
                   className={classes.rating} 
                   onChange={handleChangeRating}
                   />
-
-                {/* <Button variant="contained" type="submit">
-                  Add Review
-                </Button> */}
                 <Button variant="contained" type="submit" className={classes.postButton}>
                   Post Review
                 </Button>
-
               </form>
-            {/* </Paper> */}
           </Box>
           <Typography className={classes.heading}>Reviews</Typography>
     <CircularProgress style={{ display: reviews?"none":"block", margin: "20px auto" }} />
@@ -336,30 +250,4 @@ const Movie = (props) => {
 
 export default Movie;
 
-{
-  /* <Box
-  sx={{
-    width: 300,
-    height: 300,
-    backgroundColor: 'primary.dark',
-    '&:hover': {
-      backgroundColor: 'primary.main',
-      opacity: [0.9, 0.8, 0.7],
-    },
-  }}
-/>
 
-<Box display="flex" className={classes.box} justifyContent="flex-start" m={1} p={1}>
-    	<Box p={1}>
-          <img className={classes.poster} src={ movie?("https://image.tmdb.org/t/p/w500"+movie.poster):"https://via.placeholder.com/400x600" } />
-        </Box>
-        <Box p={1}>
-          <Typography variant="h3" gutterBottom className={classes.title}>{ movie?movie.title:"" }</Typography>
-          <Typography variant="subtitle1" gutterBottom className={classes.date}>{ movie?toDate(movie.release_date):"" }</Typography>
-          <Typography variant="subtitle1" gutterBottom className={classes.plot}>{ movie?movie.plot:"" }</Typography>
-          <Typography variant="h5" gutterBottom className={classes.title}>Cast:</Typography>
-          <Typography variant="subtitle1" gutterBottom className={classes.title}>{ movie?movie.cast.map(x=><Link href={"/people/"+x.people_id} className={classes.link}>{x.name}</Link>):"" }</Typography>
-          <Button disabled={!(movie && movie.imdb_id)} variant="contained" href={"https://imdb.com/title/"+movie?movie.imdb_id:""} className={classes.button}>IMDB</Button>
-        </Box>
-  	</Box> */
-}
