@@ -7,7 +7,7 @@ Lights Out is a website for movie night with the family. You can browse from the
 * [API Reference](#api-reference)
 * [How it all works ](#how-it-all-works)
 * [Technologies](#technologies)
-* [Deployed Link](#deployed-link)
+* [Deployed Link](https://lights-out-p3.netlify.app/)
 
 
 
