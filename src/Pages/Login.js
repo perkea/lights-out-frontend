@@ -3,8 +3,10 @@ import { signIn } from "../services/firebase";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { useHistory } from 'react-router-dom'
 
 const Login = (props) => {
+  const history = useHistory();
   return (
     <div class="container">
   
@@ -38,6 +40,7 @@ const Login = (props) => {
       </Box>
     </div>
   );
+  history.push("/");
 };
 
 export default Login;
