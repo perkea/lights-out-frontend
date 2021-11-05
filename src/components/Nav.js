@@ -42,8 +42,7 @@ const Nav = (props) => {
   
               />
             </div>
-            <Button onClick={logOut} style={{color:"white", display:"inline",  fontFamily : "monospace" ,fontSize: "19px"}} className="logButtons">
-             
+            <Button onClick={logOut} style={{color:"white", display:"inline",  fontFamily : "monospace" ,fontSize: "19px"}} className="logButtons"> 
             Logout
             </Button>
 
