@@ -8,7 +8,7 @@ import Favourites from "./Pages/Favourites";
 import Nav from "./components/Nav";
 import Search from "./Pages/SearchBox";
 import { auth } from "./services/firebase";
-
+import Logout from "./Pages/Logout"
 
 function App() {
 
@@ -91,6 +91,10 @@ useEffect(() => {
             user ? <Gallery /> : <Redirect to="/login" />;
           }}
         />
+        <Route path="/logout">
+         
+          <Logout />
+        </Route>
       </Switch>
     </div>
   );
