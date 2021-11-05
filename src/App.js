@@ -15,7 +15,7 @@ function App() {
   const url =
     "https://api.themoviedb.org/3/movie/top_rated?api_key=553ff4c7632836ac15fb42f83753edfd&language=en-US&page=100";
   console.log("length", url.length);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(auth.currentUser);
   const [movies, setMovies] = useState(null);
   const [requestedMovies, setRequestedMovies] = useState(false);
 
@@ -38,9 +38,12 @@ function App() {
   //     "https://api.themoviedb.org/3/search/company?api_key=553ff4c7632836ac15fb42f83753edfd&page=1";
   // };
 useEffect(() => {
-    const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
+    const unsuscribe = auth.onAuthStateChanged((user) => {
+      console.log("the set user", user);
+      setUser(user)});
     return () => unsuscribe();
   }, []);
+  console.log("the user", user);
   return (
     <div>
       <Switch>
