@@ -31,7 +31,7 @@ const Nav = (props) => {
         </Link>
         {props.user ? (
           <div style = {{float:"right"}}>
-            <div style={{color:"white", display:"inline", marginLeft: "600px"}}>
+            <div style={{color:"white", display:"inline", marginLeft: "600px", fontFamily : "monospace" ,fontSize: "19px"}}>
               Welcome&nbsp; 
               <img
                 src={props.user.photoURL}
@@ -42,8 +42,9 @@ const Nav = (props) => {
   
               />
             </div>
-            <Button onClick={logOut} style={{color:"white", display:"inline"}} className="logButtons">
-              Logout
+            <Button onClick={logOut} style={{color:"white", display:"inline",  fontFamily : "monospace" ,fontSize: "19px"}} className="logButtons">
+             
+            Logout
             </Button>
 
           </div>
